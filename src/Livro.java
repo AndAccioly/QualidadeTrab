@@ -81,8 +81,4 @@ class Livro{
 		return str;
 	}
 
-	public static Livro transfStrEmObj(String str){
-		return null;
-	}
-
 }
