@@ -14,6 +14,8 @@ class IuLogin{
 			System.out.println("2. Teste ler tudo");
 			System.out.println("3. Teste ler especifico");
 			System.out.println("4. Incrementar");
+			System.out.println("5. Deletar");
+			System.out.println("6. Decrementar");
 			opcao = reader.nextInt();
 			reader.nextLine();
 			System.out.println(opcao);
@@ -31,6 +33,12 @@ class IuLogin{
 			}else if(opcao == 4){
 				String nome = reader.nextLine();
 				teste.adicionarQuantidadeLivro(nome, 1);
+			}else if(opcao ==5){
+				String nome = reader.nextLine();
+				teste.deletarLivro(nome);
+			}else if(opcao == 6){
+				String nome = reader.nextLine();
+				teste.diminuirQuantidadeLivro(nome, 1);
 			}
 		}
 

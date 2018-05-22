@@ -24,7 +24,7 @@ class PersistLivro{
 	}
 	
 	public int gravarLivro(Livro livro){
-		String str = livro.camposEmStr();
+		String str = livro.camposEmStr() + endline;
 		System.out.println("Salvando livro - " + str );
 
 		for(Livro l : this.lerTodosLivros()){
@@ -32,7 +32,7 @@ class PersistLivro{
 			// 	System.out.println("Livro ja estava adicionado");
 			// 	break;
 			// }
-			str = str + endline + l.camposEmStr();
+			str = str + l.camposEmStr() + endline ;
 		}
 		
 		gravarString(str);
@@ -70,6 +70,29 @@ class PersistLivro{
 		gravarString(str);
 
 		return encontrado;
+	}
+
+	public int diminuirQuantidadeLivro(String cod, int quant){
+		String str = "";
+
+		for(Livro l : this.lerTodosLivros()){
+			System.out.println(l.getCod());
+			if(cod.equals(l.getCod())){
+				l.setQuantidade(l.getQuantidade() - quant);
+				if(l.getQuantidade() < 0){						//quantidade insuficiente em estoque
+					System.out.println("Quantidade em estoque insuficiente.");
+					return -1;
+				}else{
+					str = str + l.camposEmStr() + endline;
+				}
+			}else{
+				str = str + l.camposEmStr() + endline;
+			}
+		}
+
+		gravarString(str);
+
+		return 0;
 	}
 
 	public List<Livro> lerTodosLivros(){
@@ -111,7 +134,20 @@ class PersistLivro{
 		return 1;
 	}
 
-	public int deletarLivro(){
+	public int deletarLivro(String cod){
+		String str = "";
+
+		for(Livro l : this.lerTodosLivros()){
+			if(!l.getCod().equals(cod)){
+				str = str + l.camposEmStr() + endline;
+			}else{
+				System.out.println("Livro deletado" + l.camposEmStr());
+			}
+			
+		}
+
+		gravarString(str);
+
 		return 0;
 	}
 
