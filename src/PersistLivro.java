@@ -13,14 +13,11 @@ class PersistLivro{
 //o usuário deverá informar apelido e senha
 // Cada usuário terá uma estante virtual onde poderá armazenar até 10 (dez) exemplares de livros
 	private String linkBdLivro = "bd_livro.xml";
-	private String linkBdPessoa = "bd_pessoa.xml";
 	String endline = "\n";
 	private File fLivro;
-	private File fPessoa;
 
 	public PersistLivro(){
 		fLivro = new File(linkBdLivro);
-		fPessoa = new File(linkBdPessoa);
 	}
 	
 	public int gravarLivro(Livro livro){
@@ -53,7 +50,7 @@ class PersistLivro{
 
 	public int adicionarQuantidadeLivro(String cod, int quant){
 		String str = "";
-		int encontrado = 0;
+		int encontrado = 1;
 		System.out.println("Adicionando quantidade livro");
 
 		for(Livro l : this.lerTodosLivros()){
@@ -61,7 +58,7 @@ class PersistLivro{
 			if(cod.equals(l.getCod())){
 				l.setQuantidade(l.getQuantidade() + quant);
 				str = str + l.camposEmStr() + endline;
-				encontrado = 1;	
+				encontrado = 0;	
 			}else{
 				str = str + l.camposEmStr() + endline;
 			}
@@ -128,10 +125,10 @@ class PersistLivro{
 
 		}catch(Exception e){
 			System.out.println("Erro na escrita do arquivo");
-			return 0;
+			return 1;
 		}
 
-		return 1;
+		return 0;
 	}
 
 	public int deletarLivro(String cod){

@@ -1,10 +1,11 @@
 import java.util.List;
+import java.util.ArrayList;
 
 class Estante{
 	private List<Livro> livros;
 
 	public Estante(){
-		this.livros = null;
+		this.livros = new ArrayList<Livro>();
 	}
 
 	public Estante(List<Livro> livros){
@@ -20,6 +21,7 @@ class Estante{
 	}
 
 	public int adicionaLivro(Livro livro){
+		this.livros.add(livro);
 		return 0;
 	}
 
@@ -30,7 +32,7 @@ class Estante{
 	public String camposEmStr(){
 		String str = "";
 		for(Livro l : livros){
-			str += l.camposXml();
+			str += l.camposEmStr();
 		}
 
 		return str;

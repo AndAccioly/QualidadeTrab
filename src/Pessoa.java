@@ -54,7 +54,7 @@ class Pessoa{
 	}
 
 	public String camposEmStr(){
-		String str = apelido + ";" + senha + ";" +  tipo + ";" estante.codEmStr();
+		String str = apelido + ";" + senha + ";" +  tipo + ";" + estante.codEmStr();
 		return str;
 	}
 

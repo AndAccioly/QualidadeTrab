@@ -1,11 +1,11 @@
-
 import java.util.Scanner;
 
 class IuLogin{
-	public static void login(){
+	public static void teste(){
 		Scanner reader = new Scanner(System.in);
 		int opcao = -1;
 		PersistLivro teste = new PersistLivro();
+		PersistPessoa persistPessoa = new PersistPessoa();
 
 		while(opcao != 0){
 			System.out.println("Loja de livros");	
@@ -16,6 +16,7 @@ class IuLogin{
 			System.out.println("4. Incrementar");
 			System.out.println("5. Deletar");
 			System.out.println("6. Decrementar");
+			System.out.println("7. Gravar Pessoa");
 			opcao = reader.nextInt();
 			reader.nextLine();
 			System.out.println(opcao);
@@ -39,9 +40,33 @@ class IuLogin{
 			}else if(opcao == 6){
 				String nome = reader.nextLine();
 				teste.diminuirQuantidadeLivro(nome, 1);
+			}else if(opcao == 7){
+				//login();
+				Pessoa p = new Pessoa();
+				Livro l = new Livro();
+				Estante e = p.getEstante();
+				e.adicionaLivro(l);
+				p.setEstante(e);
+				persistPessoa.gravarPessoa(p);
 			}
 		}
 
+	}
+
+	public static void login(){
+		int opcao = -1;
+		PersistPessoa persistPessoa = new PersistPessoa();
+		while(opcao != 0){
+			Scanner reader = new Scanner(System.in);
+			System.out.println("Login");
+			System.out.println("Digite seu usuário: ");
+			String nome = reader.nextLine();
+			System.out.println("Digite sua senha: ");
+			String senha = reader.nextLine();
+			persistPessoa.gravarPessoa(new Pessoa());
+
+			
+		}
 	}
 
 }
