@@ -17,6 +17,8 @@ class IuLogin{
 			System.out.println("5. Deletar");
 			System.out.println("6. Decrementar");
 			System.out.println("7. Gravar Pessoa");
+			System.out.println("8. Teste Login");
+			System.out.println("9. Cadastrar");
 			opcao = reader.nextInt();
 			reader.nextLine();
 			System.out.println(opcao);
@@ -45,9 +47,23 @@ class IuLogin{
 				Pessoa p = new Pessoa();
 				Livro l = new Livro();
 				Estante e = p.getEstante();
-				e.adicionaLivro(l);
+				//e.adicionaLivro(l);
 				p.setEstante(e);
+				p.setTelefone("(12) - 123456789");
 				persistPessoa.gravarPessoa(p);
+			}else if(opcao == 8){
+				System.out.println("Insira o apelido: ");
+				String nome = reader.nextLine();
+				System.out.println("Insira a senha: ");
+				String senha = reader.nextLine();
+				Pessoa p = NegocioLogin.login(nome, senha);
+				if(p == null){
+					System.out.println("Usuario ou senha invalidos");
+				}else{
+					//chama funcao de inicio do programa
+				}
+			}else if(opcao == 9){
+				IuCadastro.cadastrar();
 			}
 		}
 

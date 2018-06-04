@@ -45,7 +45,7 @@ class PersistPessoa{
 
 		}catch (Exception e){
 			e.printStackTrace();
-			System.out.println("Erro na leitura de todos os livros do banco.");
+			System.out.println("Erro na leitura de todas as pessoas do banco.");
 			return null;
 		}
 
@@ -54,6 +54,16 @@ class PersistPessoa{
 		}
 
 		return pessoas;
+	}
+
+	public Pessoa buscarPessoa(String apelido, String senha){
+		for(Pessoa p : this.lerTodasPessoas()){
+			if(p.getApelido().equals(apelido) && p.getSenha().equals(senha)){
+				return p;
+			}
+		}
+		
+		return null;
 	}
 
 	
@@ -78,11 +88,13 @@ class PersistPessoa{
 		PersistLivro persistLivro = new PersistLivro();
 		int i;
 		
-		p.setApelido(vetor[0]);
-		p.setSenha(vetor[1]);
-		p.setTipo(Integer.parseInt(vetor[2]));
+		p.setNome(vetor[0]);
+		p.setApelido(vetor[1]);
+		p.setSenha(vetor[2]);
+		p.setTipo(Integer.parseInt(vetor[3]));
+		p.setTelefone(vetor[4]);
 		
-		for(i = 3; i < vetor.length; i++){
+		for(i = 5; i < vetor.length; i++){
 			Livro l;
 			l = persistLivro.buscarLivro(vetor[i]);
 			if(l != null){

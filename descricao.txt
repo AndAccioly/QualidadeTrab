@@ -1,0 +1,56 @@
+2.2. TRABALHO 2
+A segunda alternativa é o desenvolvimento de um sistema de software com foco em teste. O sistema a ser
+desenvolvido implementará estantes virtuais para os seus usuários (vide exemplo dessa classe de sistema de
+software no endereço https://www.skoob.com.br/). 
+
+Para acessar o sistema, o usuário precisará estar cadastrado. Para se cadastrar, o usuário precisará informar nome, apelido, telefone e senha. 
+
+Para acessar o sistema, o usuário deverá informar apelido e senha. Cada usuário terá uma estante virtual onde poderá
+armazenar até 10 (dez) exemplares de livros. Na estante virtual de um usuário, não pode haver mais de um exemplar de um livro. 
+
+Acerca de cada livro, serão armazenados os seguintes dados: título, nome do autor, data
+de publicação, código e gênero literário.  Os dados acerca de um livro serão informados quando um exemplar
+do livro for incluído pela primeira vez em uma estante virtual, e serão excluídos quando removidos todos os
+exemplares do livro. 
+
+Uma vez autenticado, o leitor terá acesso aos seguintes serviços: consultar dados de
+livro, incluir exemplar em estante, remover exemplar de estante, criar resenha, informar se deseja trocar
+exemplar e procurar usuário. 
+
+A consulta a dados de livro será por título e resultará na seguinte informação:
+título, autor, data de publicação, gênero literário e resenhas acerca do livro. 
+
+A procura por troca será por título e resultará em lista de usuários com exemplares e que desejam a troca. A procura por usuário será por apelido
+e resultará na seguinte informação: nome, apelido e telefone do usuário.
+
+NOME 15 CARACTERES (LETRA, ESPAÇO EM BRANCO, PONTO)
+APELIDO (CHAVE) 5 LETRAS
+TELEFONE (XX) – XXXXXXXXX (X É ALGARISMO DE 0 A 9)
+SENHA 4 LETRAS (NÃO PODE OCORRER REPETIÇÃO DE LETRA)
+TÍTULO 20 CARACTERES (NÃO PODE HAVER ESPAÇO EM BRANCO DUPLICADO)
+DATA DD/MM/AA (DD É VALOR ENTRE 00 E 31, MM ENTRE 01 E 12, AA ENTRE 00 E 99)
+CÓDIGO (CHAVE) XXXXX (X É ALGARISMOS DE 0 A 9)
+TEXTO 40 CARACTERES
+GÊNERO LITERÁRIO EPOPEIA, NOVELA, CONTO, ENSAIO, ROMANCE
+
+
+O desenvolvimento do sistema deve englobar as seguintes atividades.
+1. Propor e documentar processo de desenvolvimento com enfoque na disciplina de teste.
+2. Propor e documentar plano de desenvolvimento do projeto.
+3. Propor e documentar plano de teste do projeto.
+4. Desenvolver usando ferramenta para controle de versões.
+5. Revisar padrão de codificação usando ferramenta para esse propósito.
+6. Projetar e implementar os casos de teste usando métodos descritos na literatura.
+7. Executar testes de unidade usando ferramenta para esse propósito.
+8. Coletar métricas de cobertura dos testes de unidade usando ferramenta para esse propósito.
+9. Elaborar smoke test, executar smoke teste e gerar relatório com resultados da execução do teste.
+10. Documentar software usando ferramenta apropriada (Doxygen etc.).
+
+
+3. ENTREGA DO TRABALHO
+1. Preencha os documentos com clareza e revise a ortografia.
+2. Forneça códigos desenvolvidos.
+3. Forneça comprovação das atividades realizadas (textos, capturas de telas etc.).
+4. Forneça os artefatos produzidos via e-mail ou em um CD organizado
+5. Em cada diretório, inclua arquivo LEIAME.PDF com o objetivo do diretório.
+6. Identifique o trabalho com as matrículas dos membros da equipe.
