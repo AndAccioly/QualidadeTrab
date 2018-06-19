@@ -8,18 +8,46 @@ import java.io.PrintWriter;
 import java.util.List;
 import java.util.ArrayList;
 
+/**
+* Classe com todos métodos para trocas de informações com o banco de dados referentes à classe Livro.
+* <p>
+* Cada usuário terá uma estante virtual onde poderá armazenar até 10 (dez) exemplares de livros.
+* <p>
+* O usuário deverá informar apelido e senha.
+*
+* @author Andre Accioly
+* @author Tiago Kfouri
+* @version %I%, %G%
+* @since 1.0
+* @see Livro
+*/
 class PersistLivro{
 
-//o usuário deverá informar apelido e senha
-// Cada usuário terá uma estante virtual onde poderá armazenar até 10 (dez) exemplares de livros
+
 	private String linkBdLivro = "bd_livro.xml";
 	String endline = "\n";
 	private File fLivro;
 
+	/**
+	* Construtor da classe PeersistLivro. Inicia o ponteiro para o arquivo xml referente ao livro, que será
+	* onde serão armazenados os dados.
+	* 
+	* @see Livro
+	* @see PersistLivro
+	* @since 1.0
+	*/
 	public PersistLivro(){
 		fLivro = new File(linkBdLivro);
 	}
-	
+
+	/**
+	* Método para salvar um objeto da classe Livro no banco de dados
+	*
+	* @param livro 	o livro que será salvo no banco de dados
+	* @return 		0, caso sucesso
+	* @see Livro
+	* @since 1.0
+	*/	
 	public int gravarLivro(Livro livro){
 		String str = livro.camposEmStr() + endline;
 		System.out.println("Salvando livro - " + str );
@@ -37,6 +65,16 @@ class PersistLivro{
 		return 0;
 	}
 
+	/**
+	* Método para buscar um objeto da classe Livro do banco de dados através de seu código.
+	* Caso não encontre, é printado uma mensagem de alerta na tela e retorna-se null.
+	* O livro não é deletado do banco de dados.
+	*
+	* @param cod 	o código do livro que será buscado no banco de dados
+	* @return 		O livro cujo código foi passado por parâmetro. Caso não encontre, retorna null
+	* @see Livro
+	* @since 1.0
+	*/
 	public Livro buscarLivro(String cod){
 		for(Livro l : this.lerTodosLivros()){
 			if(l.getCod().equals(cod)){
@@ -48,6 +86,15 @@ class PersistLivro{
 		return null;
 	}
 
+	/**
+	* Método para adicionar uma quantidade de livros à quantidade atual de um livro.
+	*
+	* @param cod 	o codigo do livro
+	* @param quant 	a quantidade de livros a serem adicionados
+	* @return 		0, caso sucesso. 1, caso falhe
+	* @see Livro
+	* @since 1.0
+	*/
 	public int adicionarQuantidadeLivro(String cod, int quant){
 		String str = "";
 		int encontrado = 1;
@@ -69,6 +116,15 @@ class PersistLivro{
 		return encontrado;
 	}
 
+	/**
+	* Método para diminuir uma quantidade de livros à quantidade atual de um livro.
+	*
+	* @param cod 	o codigo do livro
+	* @param quant 	a quantidade de livros a serem diminuidos
+	* @return 		0, caso sucesso. -1, caso não há quantidade suficiente em estoque
+	* @see Livro
+	* @since 1.0
+	*/
 	public int diminuirQuantidadeLivro(String cod, int quant){
 		String str = "";
 
@@ -92,6 +148,14 @@ class PersistLivro{
 		return 0;
 	}
 
+	/**
+	* Método para ler todos os livros do banco de dados. Eles não são retirados do banco.
+	* Pode retornar uma exceção caso ocorra algum erro durante a leitura dos livros no banco de dados.
+	*
+	* @return 		uma lista com todos os livros (em formato do objeto Livro) do banco de dados
+	* @see Livro
+	* @since 1.0
+	*/
 	public List<Livro> lerTodosLivros(){
 		List<Livro> livros = new ArrayList<Livro>();
 		System.out.println("\nLendo todos os livros");
@@ -117,6 +181,14 @@ class PersistLivro{
 		return livros;
 	}
 
+	/**
+	* Método auxiliar para gravar uma string no arquivo.
+	* Pode retornar uma exceção caso ocorra algum erro durante a escrita.
+	*
+	* @param str 	a string a ser gravada no arquivo
+	* @return 		0, caso sucesso. 1, caso falhe
+	* @since 1.0
+	*/
 	public int gravarString(String str){
 		try{	
 			BufferedWriter bw = new BufferedWriter(new FileWriter(linkBdLivro));
@@ -131,6 +203,15 @@ class PersistLivro{
 		return 0;
 	}
 
+	/**
+	* Método para deletar um livro do banco de dados. Precisa do código do livro para conseguir deletar.
+	*
+	* @param cod 	o codigo do livro a ser deletado
+	* @return 		0, caso sucesso
+	* @see Livro
+	* @see lerTodosLivros
+	* @since 1.0
+	*/
 	public int deletarLivro(String cod){
 		String str = "";
 
@@ -148,6 +229,14 @@ class PersistLivro{
 		return 0;
 	}
 
+	/**
+	* Método auxiliar para transformar uma livro no formato de string para um objeto Livro
+	*
+	* @param str 	o livro em formato de string
+	* @return 		o livro em formato de objeto
+	* @see Livro
+	* @since 1.0
+	*/
 	public static Livro transfStrEmObj(String str){
 		String[] vetor = str.split(";");
 		Livro l = new Livro();
