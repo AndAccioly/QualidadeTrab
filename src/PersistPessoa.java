@@ -29,7 +29,7 @@ class PersistPessoa{
 	* 
 	* @see Pessoa
 	* @see PersistPessoa
-	* @since 1.0
+	* @since 			1.0
 	*/
 	public PersistPessoa(){
 		fPessoa = new File(linkBdPessoa);
@@ -41,7 +41,7 @@ class PersistPessoa{
 	* @param pessoa 	um objeto Pessoa, que será salvo no banco de dados
 	* @return 			0, caso sucesso
 	* @see Pessoa
-	* @since 1.0
+	* @since 			1.0
 	*/	
 	public int gravarPessoa(Pessoa pessoa){
 		String str = pessoa.camposEmStr() + endline;
@@ -62,7 +62,7 @@ class PersistPessoa{
 	*
 	* @return 		uma lista com todas as pessoas (em formato do objeto Pessoa) do banco de dados
 	* @see Pessoa
-	* @since 1.0
+	* @since 		1.0
 	*/
 	public List<Pessoa> lerTodasPessoas(){
 		List<Pessoa> pessoas = new ArrayList<Pessoa>();
@@ -99,7 +99,7 @@ class PersistPessoa{
 	* @param senha 		a senha da pessoa que será buscada no banco de dados
 	* @return 			a pessoa cujos apelido e senha foram passados por parâmetro. Caso não encontre, retorna null
 	* @see Pessoa
-	* @since 1.0
+	* @since 			1.0
 	*/
 	public Pessoa buscarPessoa(String apelido, String senha){
 		for(Pessoa p : this.lerTodasPessoas()){
@@ -114,11 +114,11 @@ class PersistPessoa{
 	/**
 	* Método para deletar uma pessoa do banco de dados. Precisa do apelido da pessoa para conseguir deletar.
 	*
-	* @param apelido 	o apelido da pessoa a ser deletado
-	* @return 			0, caso sucesso
+	* @param apelido 		o apelido da pessoa a ser deletado
+	* @return 				0, caso sucesso
 	* @see Pessoa
 	* @see lerTodasPessoas
-	* @since 1.0
+	* @since 				1.0
 	*/
 	public int deletarPessoa(String apelido){
 		String str = "";
@@ -143,7 +143,7 @@ class PersistPessoa{
 	*
 	* @param str 	a string a ser gravada no arquivo
 	* @return 		0, caso sucesso. 1, caso falhe
-	* @since 1.0
+	* @since 		1.0
 	*/
 	public int gravarString(String str){
 		try{	
@@ -164,7 +164,7 @@ class PersistPessoa{
 	* @param str 	a pessoa em formato de string
 	* @return 		a pessoa em formato de objeto
 	* @see Pessoa
-	* @since 1.0
+	* @since 		1.0
 	*/
 	public static Pessoa transfStrEmObj(String str){
 		String[] vetor = str.split(";");
