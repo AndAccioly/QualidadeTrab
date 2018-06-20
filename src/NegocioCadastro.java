@@ -3,7 +3,7 @@
 * diretamente, necessitando dos métodos das classes de Persist para manusear os dados necessários no banco de dados.
 * <p>
 * A classe NegocioCadastro permite validar cadastro, apenas. Para isso, utiliza de seus métodos auxiliares e privados: 
-* validar e criptografar senha, validar nome, validar apelido e validar telefone.
+* validarECriptografarSenha, validarNome, validarApelido e validarTelefone.
 *
 * @author Andre Accioly
 * @author Tiago Kfouri
