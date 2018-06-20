@@ -66,7 +66,22 @@ class PersistPessoa{
 		return null;
 	}
 
-	
+	public int deletarPessoa(String apelido){
+		String str = "";
+
+		for(Pessoa p : this.lerTodasPessoas()){
+			if(!p.getApelido().equals(apelido)){
+				str = str + p.camposEmStr() + endline;
+			}else{
+				System.out.println("Pessoa deletada" + p.camposEmStr());
+			}
+			
+		}
+
+		gravarString(str);
+
+		return 0;
+	}
 
 	public int gravarString(String str){
 		try{	
