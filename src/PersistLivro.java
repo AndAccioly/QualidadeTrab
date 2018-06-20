@@ -23,7 +23,6 @@ import java.util.ArrayList;
 */
 class PersistLivro{
 
-
 	private String linkBdLivro = "bd_livro.xml";
 	String endline = "\n";
 	private File fLivro;
@@ -230,7 +229,7 @@ class PersistLivro{
 	}
 
 	/**
-	* Método auxiliar para transformar uma livro no formato de string para um objeto Livro
+	* Método auxiliar para transformar um livro no formato de string para um objeto Livro
 	*
 	* @param str 	o livro em formato de string
 	* @return 		o livro em formato de objeto
