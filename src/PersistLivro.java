@@ -230,6 +230,7 @@ class PersistLivro{
 	}
 
 	/**
+	* Método auxiliar para transformar um livro no formato de string para um objeto Livro
 	*
 	* @param str 	o livro em formato de string
 	* @return 		o livro em formato de objeto
