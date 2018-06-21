@@ -21,7 +21,6 @@ class IuLogin{
 			System.out.println("9. Cadastrar");
 			opcao = reader.nextInt();
 			reader.nextLine();
-			System.out.println(opcao);
 			
 			if(opcao == 1){
 				String nome = reader.nextLine();
@@ -60,7 +59,7 @@ class IuLogin{
 				if(p == null){
 					System.out.println("Usuario ou senha invalidos");
 				}else{
-					//chama funcao de inicio do programa
+					IuEstante.mostrarEstante(p);
 				}
 			}else if(opcao == 9){
 				IuCadastro.cadastrar();
@@ -72,17 +71,27 @@ class IuLogin{
 	public static void login(){
 		int opcao = -1;
 		PersistPessoa persistPessoa = new PersistPessoa();
-		while(opcao != 0){
-			Scanner reader = new Scanner(System.in);
-			System.out.println("Login");
-			System.out.println("Digite seu usuário: ");
-			String nome = reader.nextLine();
-			System.out.println("Digite sua senha: ");
-			String senha = reader.nextLine();
-			persistPessoa.gravarPessoa(new Pessoa());
+		Scanner reader = new Scanner(System.in);
 
-			
+		while(opcao != 0){
+			System.out.println("1. Login");
+			System.out.println("0. Sair");
+			opcao = reader.nextInt();
+			reader.nextLine();
+
+			if(opcao == 1){
+				System.out.println("Digite seu usuário: ");
+				String nome = reader.nextLine();
+				System.out.println("Digite sua senha: ");
+				String senha = reader.nextLine();
+
+				Pessoa p = NegocioLogin.login(nome,senha);
+				if(p != null){
+					IuEstante.mostrarEstante(p);
+				}else{
+					System.out.println("Usuario ou senha invalidos");
+				}
+			}
 		}
 	}
-
 }
