@@ -40,6 +40,7 @@ class NegocioCadastro{
 		return 0;
 	}
 
+<<<<<<< HEAD
 	private static Boolean validarSenha(String senha){
 		if(!senha.matches("[a-zA-Z]{4}")){
 			System.out.println("Senha deve conter apenas caracteres.");
@@ -59,6 +60,32 @@ class NegocioCadastro{
 	}
 
 	private static Boolean validarNome(String nome){
+=======
+//@todo
+	/**
+	* Método auxiliar do método validarCadastro para validar uma senha de uma pessoa. Também criptografa a senha
+	* de acordo com...
+	*
+	* @param senha 	uma string com a senha que será validada
+	* @return 		a senha depois de ser criptografada. null caso haja um erro
+	* @since 		1.0
+	*/
+	private String validarECriptografarSenha(String senha){
+		return "";
+	}
+
+	/**
+	* Método auxiliar do método validarCadastro para validar um nome de uma pessoa, ou seja, verificar se ele já 
+	* existe no banco de dados.
+	*
+	* @param nome 		uma string com o nome que será validado
+	* @return 			um booleano true, caso sucesso
+	* @see PersistPessoa
+	* @see buscarPessoa
+	* @since 			1.0
+	*/
+	private Boolean validarNome(String nome){
+>>>>>>> 1919a3c9d841cec3931000982746314b3f68dddf
 		PersistPessoa persistPessoa = new PersistPessoa();
 		Pessoa p = persistPessoa.buscarPesPorNome(nome);
 		if(p != null){
@@ -68,6 +95,7 @@ class NegocioCadastro{
 		return true;
 	}
 
+<<<<<<< HEAD
 	private static Boolean validarApelido(String apelido){
 		PersistPessoa persistPessoa = new PersistPessoa();
 		Pessoa p = persistPessoa.buscarPesPorApel(apelido);
@@ -89,6 +117,33 @@ class NegocioCadastro{
 			System.out.println("Telefone deve conter apenas digitos");
 			return false;
 		}
+=======
+	/**
+	* Método auxiliar do método validarCadastro para validar um apelido de uma pessoa, ou seja, verificar se ele já 
+	* existe no banco de dados.
+	*
+	* @param apelido 	uma string com o apelido que será validado
+	* @return 			um booleano true, caso sucesso
+	* @see PersistPessoa
+	* @see buscarPessoa
+	* @since 			1.0
+	*/
+	private Boolean validarApelido(String apelido){
+		return true;
+	}
+
+	/**
+	* Método auxiliar do método validarCadastro para validar um telefone de uma pessoa, ou seja, verificar se ele já 
+	* existe no banco de dados.
+	*
+	* @param telefone 	uma string com o telefone que será validado
+	* @return 			um booleano true, caso sucesso
+	* @see PersistPessoa
+	* @see buscarPessoa
+	* @since 			1.0
+	*/
+	private Boolean validarTelefone(String telefone){
+>>>>>>> 1919a3c9d841cec3931000982746314b3f68dddf
 		return true;
 	}
 

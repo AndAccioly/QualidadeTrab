@@ -56,7 +56,22 @@ class PersistPessoa{
 		return pessoas;
 	}
 
+<<<<<<< HEAD
 	public Pessoa buscarPesPorNome(String nome){
+=======
+	/**
+	* Método para buscar um objeto da classe Pessoa do banco de dados através de seu apelido e senha.
+	* Caso não encontre, retorna-se null.
+	* A pessoa não é deletado do banco de dados.
+	*
+	* @param apelido 	o apelido da pessoa que será buscada no banco de dados
+	* @param senha 		a senha da pessoa que será buscada no banco de dados
+	* @return 			a pessoa cujos apelido e senha foram passados por parâmetro. Caso não encontre, retorna null
+	* @see Pessoa
+	* @since 			1.0
+	*/
+	public Pessoa buscarPessoa(String apelido, String senha){
+>>>>>>> 1919a3c9d841cec3931000982746314b3f68dddf
 		for(Pessoa p : this.lerTodasPessoas()){
 			if(p.getNome().equals(nome)){
 				return p;
