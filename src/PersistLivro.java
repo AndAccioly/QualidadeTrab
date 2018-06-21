@@ -134,7 +134,7 @@ class PersistLivro{
 				l.setQuantidade(l.getQuantidade() - quant);
 				if(l.getQuantidade() < 0){						//quantidade insuficiente em estoque
 					System.out.println("Quantidade em estoque insuficiente.");
-					return -1;
+					return 1;
 				}else{
 					str = str + l.camposEmStr() + endline;
 				}
@@ -220,6 +220,7 @@ class PersistLivro{
 				str = str + l.camposEmStr() + endline;
 			}else{
 				System.out.println("Livro deletado" + l.camposEmStr());
+				//faz nada (ou seja, so adiciona na string que vai ser escrita no arquivo se o livro for diferente do que ta sendo deletado)
 			}
 			
 		}

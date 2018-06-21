@@ -56,9 +56,19 @@ class PersistPessoa{
 		return pessoas;
 	}
 
-	public Pessoa buscarPessoa(String apelido, String senha){
+	public Pessoa buscarPesPorNome(String nome){
 		for(Pessoa p : this.lerTodasPessoas()){
-			if(p.getApelido().equals(apelido) && p.getSenha().equals(senha)){
+			if(p.getNome().equals(nome)){
+				return p;
+			}
+		}
+		
+		return null;
+	}
+
+	public Pessoa buscarPesPorApel(String apelido){
+		for(Pessoa p : this.lerTodasPessoas()){
+			if(p.getApelido().equals(apelido)){
 				return p;
 			}
 		}
