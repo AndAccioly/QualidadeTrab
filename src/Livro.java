@@ -1,3 +1,5 @@
+import java.util.List;
+import java.util.ArrayList;
 /**
 * Classe que representa o objeto Livro. Acerca de cada livro, serão armazenados os seguintes dados: 
 * título, nome do autor, data de publicação, código, gênero literário e numero de livros
@@ -14,6 +16,7 @@ class Livro{
 	private String cod;
 	private String genero;
 	private int quantidade;
+	private List<String> resenhas;
 
 	/**
 	* Construtor da classe Livro. Caso nao seja passado parametro, os campos serao iniciados com campos genericos
@@ -23,10 +26,11 @@ class Livro{
 	*/
 	public Livro(){
 		this.titulo = "Titulo generico";
-		this.nomeAutor = "Nome autor generico";
+		this.nomeAutor = "Autor generico";
 		this.dtPublicacao = "00/00/0000";
 		this.cod = "000000";
 		this.genero = "Genero generico";
+		this.resenhas = new ArrayList<String>();
 		this.quantidade = 0;
 
 	}
@@ -43,13 +47,26 @@ class Livro{
 	* @see Livro
 	* @since 1.0
 	*/
-	public Livro(String titulo, String nomeAutor, String dtPublicacao, String cod, String genero, int quantidade){
+	public Livro(String titulo, String nomeAutor, String dtPublicacao, String cod, String genero, int quantidade, List<String> resenhas){
 		this.titulo = titulo;
 		this.nomeAutor = nomeAutor;
 		this.dtPublicacao = dtPublicacao;
 		this.cod = cod;
 		this.genero = genero;
 		this.quantidade = quantidade;
+		this.resenhas = resenhas;
+	}
+
+	public List<String> getResenhas(){
+		return this.resenhas;
+	}
+
+	public void setResenhas(List<String> resenhas){
+		this.resenhas = resenhas;
+	}
+
+	public void adicionarResenha(String resenha){
+		this.resenhas.add(resenha);
 	}
 
 	/**
@@ -180,6 +197,11 @@ class Livro{
 	*/
 	public String camposEmStr(){
 		String str = cod + ";" + titulo + ";" + nomeAutor + ";" + dtPublicacao + ";" + genero + ";" + quantidade;
+
+		for(String s : resenhas){
+			str += ";" + s;
+		}
+
 		return str;
 	}
 

@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 class IuLogin{
 	public static void teste(){
+		login();
 		Scanner reader = new Scanner(System.in);
 		int opcao = -1;
 		PersistLivro teste = new PersistLivro();
@@ -34,13 +35,13 @@ class IuLogin{
 				System.out.println("Lido --> " + (teste.buscarLivro(nome)).camposEmStr());
 			}else if(opcao == 4){
 				String nome = reader.nextLine();
-				teste.adicionarQuantidadeLivro(nome, 1);
+				teste.somarQuantLiv(nome, 1);
 			}else if(opcao ==5){
 				String nome = reader.nextLine();
 				teste.deletarLivro(nome);
 			}else if(opcao == 6){
 				String nome = reader.nextLine();
-				teste.diminuirQuantidadeLivro(nome, 1);
+				teste.subtrairQuantLiv(nome, 1);
 			}else if(opcao == 7){
 				//login();
 				Pessoa p = new Pessoa();
@@ -80,7 +81,7 @@ class IuLogin{
 			reader.nextLine();
 
 			if(opcao == 1){
-				System.out.println("Digite seu usuário: ");
+				System.out.println("Digite seu usuario: ");
 				String nome = reader.nextLine();
 				System.out.println("Digite sua senha: ");
 				String senha = reader.nextLine();

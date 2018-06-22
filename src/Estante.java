@@ -80,7 +80,17 @@ class Estante{
 	* @since 		1.0
 	*/
 	public int removeLivro(Livro livro){
-		return 0;
+		int i = 0;
+		for(Livro l : livros){
+			if(l.getTitulo().equals(livro.getTitulo())){
+				livros.remove(i);
+				return 0;
+			}
+
+			i++;
+		}
+
+		return 1;
 	}
 
 	/**

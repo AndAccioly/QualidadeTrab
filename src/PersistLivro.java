@@ -49,7 +49,7 @@ class PersistLivro{
 	*/	
 	public int gravarLivro(Livro livro){
 		String str = livro.camposEmStr() + endline;
-		System.out.println("Salvando livro - " + str );
+		//System.out.println("Salvando livro - " + str );
 
 		for(Livro l : this.lerTodosLivros()){
 			// if(livro.getCod().equals(l.getCod())){
@@ -85,6 +85,27 @@ class PersistLivro{
 		return null;
 	}
 
+/**
+	* Método para buscar um objeto da classe Livro do banco de dados através de seu titulo.
+	* Caso não encontre, é printado uma mensagem de alerta na tela e retorna-se null.
+	* O livro não é deletado do banco de dados.
+	*
+	* @param titulo 	O titulo do livro que será buscado no banco de dados
+	* @return 			O livro cujo titulo foi passado por parâmetro. Caso não encontre, retorna null
+	* @see Livro
+	* @since 1.0
+	*/
+	public Livro buscarLivroNome(String titulo){
+		for(Livro l : this.lerTodosLivros()){
+			if(l.getTitulo().equals(titulo)){
+				return l;
+			}
+		}
+		
+		System.out.println("Livro não encontrado.");
+		return null;
+	}
+
 	/**
 	* Método para adicionar uma quantidade de livros à quantidade atual de um livro.
 	*
@@ -94,7 +115,7 @@ class PersistLivro{
 	* @see Livro
 	* @since 1.0
 	*/
-	public int adicionarQuantidadeLivro(String cod, int quant){
+	public int somarQuantLiv(String cod, int quant){
 		String str = "";
 		int encontrado = 1;
 		System.out.println("Adicionando quantidade livro");
@@ -120,11 +141,11 @@ class PersistLivro{
 	*
 	* @param cod 	o codigo do livro
 	* @param quant 	a quantidade de livros a serem diminuidos
-	* @return 		0, caso sucesso. -1, caso não há quantidade suficiente em estoque
+	* @return 		0, caso sucesso. 1, caso não há quantidade suficiente em estoque
 	* @see Livro
 	* @since 1.0
 	*/
-	public int diminuirQuantidadeLivro(String cod, int quant){
+	public int subtrairQuantLiv(String cod, int quant){
 		String str = "";
 
 		for(Livro l : this.lerTodosLivros()){
@@ -173,9 +194,9 @@ class PersistLivro{
 			System.out.println("Erro na leitura de todos os livros do banco.");
 		}
 
-		for(Livro l : livros){
-			System.out.println(l.camposEmStr());
-		}
+		// for(Livro l : livros){
+		// 	System.out.println(l.camposEmStr());
+		// }
 
 		return livros;
 	}
@@ -240,6 +261,7 @@ class PersistLivro{
 	public static Livro transfStrEmObj(String str){
 		String[] vetor = str.split(";");
 		Livro l = new Livro();
+		int i;
 		
 		l.setCod(vetor[0]);
 		l.setTitulo(vetor[1]);
@@ -247,6 +269,10 @@ class PersistLivro{
 		l.setDtPublicacao(vetor[3]);
 		l.setGenero(vetor[4]);
 		l.setQuantidade(Integer.parseInt(vetor[5]));
+
+		for(i = 6; i < vetor.length; i++){
+			l.adicionarResenha(vetor[i]);
+		}
 		
 		return l;
 	}

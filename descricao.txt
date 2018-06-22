@@ -13,10 +13,12 @@ de publicação, código e gênero literário.  Os dados acerca de um livro ser�
 do livro for incluído pela primeira vez em uma estante virtual, e serão excluídos quando removidos todos os
 exemplares do livro. 
 
-Uma vez autenticado, o leitor terá acesso aos seguintes serviços: consultar dados de
-livro, incluir exemplar em estante, remover exemplar de estante, criar resenha, informar se deseja trocar
-exemplar e procurar usuário. 
-
+Uma vez autenticado, o leitor terá acesso aos seguintes serviços: 
+1) consultar dados de livro
+2) incluir exemplar em estante
+3) remover exemplar de estante
+4) criar resenha
+5) informar se deseja trocar exemplar e procurar usuário.
 A consulta a dados de livro será por título e resultará na seguinte informação:
 título, autor, data de publicação, gênero literário e resenhas acerca do livro. 
 
