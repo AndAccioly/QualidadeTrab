@@ -73,6 +73,16 @@ class NegocioCadastro{
 		return 0;
 	}
 
+	/**
+	* Método auxiliar do método validarCadastro para validar um nome de uma pessoa, ou seja, verificar se ele já 
+	* existe no banco de dados.
+	*
+	* @param nome 		uma string com o nome que será validado
+	* @return 			um booleano true, caso sucesso
+	* @see PersistPessoa
+	* @see buscarPessoa
+	* @since 			1.0
+	*/
 	private static Boolean validarSenha(String senha){
 		if(!senha.matches("[a-zA-Z]{4}")){
 			System.out.println("Senha deve conter apenas caracteres.");
@@ -102,12 +112,33 @@ class NegocioCadastro{
 		return true;
 	}
 
+	/**
+	* Método auxiliar do método validarCadastro para validar um apelido de uma pessoa, ou seja, verificar se ele já 
+	* existe no banco de dados.
+	*
+	* @param apelido 	uma string com o apelido que será validado
+	* @return 			um booleano true, caso sucesso
+	* @see PersistPessoa
+	* @see buscarPessoa
+	* @since 			1.0
+	*/
 	private static Boolean validarApelido(String apelido){
 		PersistPessoa persistPessoa = new PersistPessoa();
 		Pessoa p = persistPessoa.buscarPesPorApel(apelido);
 		return true;
 	}
 
+
+	/**
+	* Método auxiliar do método validarCadastro para validar um telefone de uma pessoa, ou seja, verificar se ele já 
+	* está no formato correto
+	*
+	* @param telefone 	uma string com o telefone que será validado
+	* @return 			um booleano true, caso sucesso
+	* @see PersistPessoa
+	* @see buscarPessoa
+	* @since 			1.0
+	*/
 	private static Boolean validarTelefone(String tel){
 		if(!tel.contains("-")){
 			System.out.println("Telefone sem hifem.");
@@ -127,6 +158,13 @@ class NegocioCadastro{
 		return true;
 	}
 
+	/**
+	* Método auxiliar do método validarCadastro para criptografar uma senha de uma pessoa. Foi feita uma criptografia bem simples, por ser somente um trabalho acadêmico, onde o caractere é transformado no seu subsequente da tabela ASC II.
+	*
+	* @param senha 	uma string com a senha que será criptografada
+	* @return 		a senha depois de ser criptografada.
+	* @since 		1.0
+	*/
 	public static String criptografarSenha(String senha){
 		String s = "";
 		for(int i = 0; i < senha.length(); i++){
