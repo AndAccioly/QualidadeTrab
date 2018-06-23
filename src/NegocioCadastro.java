@@ -17,7 +17,7 @@ class NegocioCadastro{
 	/**
 	* Método q recebe todos os parâmetros de um objeto Pessoa (nome, apelido, senha e telefone) e verifica se o nome 
 	* já existe, se o apelido já existe e se o telefone está no formato correto. Ela utiliza dos métodos auxiliares 
-	* da classe NegocioCadastro para fazer isso. São eles: validarNome, validarApelido e validarTelefone.
+	* da classe NegocioCadastro para fazer isso. São eles: validarNome, validarApelido, validarTelefone e validarSenha.
 	*
 	* @param nome 		uma string com o nome da pessoa a ser validada
 	* @param apelido 	uma string com o apelido da pessoa a ser validada
@@ -26,9 +26,10 @@ class NegocioCadastro{
 	* @return 			0, caso sucesso. 1, caso erro
 	* @see Pessoa
 	* @see PersistPessoa
-	* @see ValidarNome
-	* @see ValidarApelido
-	* @see ValidarTelefone
+	* @see validarNome
+	* @see validarApelido
+	* @see validarTelefone
+	* @see validarSenha
 	* @since 1.0
 	*/	
 	public static int validarCadastro(String nome, String apelido, String senha, String telefone){
@@ -101,6 +102,16 @@ class NegocioCadastro{
 		return true;
 	}
 
+	/**
+	* Método auxiliar do método validarCadastro para validar um nome de uma pessoa, ou seja, verificar se ele já 
+	* existe no banco de dados.
+	*
+	* @param nome 		uma string com o nome que será validado
+	* @return 			um booleano true, caso sucesso e false, caso erro
+	* @see PersistPessoa
+	* @see buscarPessoa
+	* @since 			1.0
+	*/
 	private static Boolean validarNome(String nome){
 
 		PersistPessoa persistPessoa = new PersistPessoa();
@@ -133,8 +144,8 @@ class NegocioCadastro{
 	* Método auxiliar do método validarCadastro para validar um telefone de uma pessoa, ou seja, verificar se ele já 
 	* está no formato correto
 	*
-	* @param telefone 	uma string com o telefone que será validado
-	* @return 			um booleano true, caso sucesso
+	* @param tel 		uma string com o telefone que será validado
+	* @return 			um booleano true, caso sucesso e false, caso erro
 	* @see PersistPessoa
 	* @see buscarPessoa
 	* @since 			1.0
@@ -159,7 +170,9 @@ class NegocioCadastro{
 	}
 
 	/**
-	* Método auxiliar do método validarCadastro para criptografar uma senha de uma pessoa. Foi feita uma criptografia bem simples, por ser somente um trabalho acadêmico, onde o caractere é transformado no seu subsequente da tabela ASC II.
+	* Método auxiliar do método validarCadastro para criptografar uma senha de uma pessoa. 
+	* Foi feita uma criptografia bem simples, por ser somente um trabalho acadêmico, onde o 
+	* caractere é transformado no seu subsequente da tabela ASCII.
 	*
 	* @param senha 	uma string com a senha que será criptografada
 	* @return 		a senha depois de ser criptografada.

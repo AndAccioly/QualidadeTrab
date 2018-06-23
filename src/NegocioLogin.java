@@ -14,7 +14,7 @@
 class NegocioLogin{
 
 	/**
-	* Método q busca uma pessoa com o apelido e a senha especificados no banco de dados
+	* Método que busca uma pessoa com o apelido e a senha especificados no banco de dados
 	*
 	* @param apelido	uma string com o apelido da pessoa a ser procurada no banco de dados
 	* @param senha 	 	uma string com a senha da pessoa a ser procurada no banco de dados
@@ -36,6 +36,15 @@ class NegocioLogin{
 		return null;
 	}
 
+	/**
+	* Método que criptografa uma senha. Foi feita uma criptografia bem simples, por ser somente um trabalho acadêmico, onde o 
+	* caractere é transformado no seu subsequente da tabela ASCII.
+	*
+	* @param senha 	 	uma string com a senha a ser criptografada
+	* @return 			uma string com a senha após ser criptografada
+	* @see Pessoa
+	* @since 1.0
+	*/
 	public static String criptografarSenha(String senha){
 		String s = "";
 		for(int i = 0; i < senha.length(); i++){
