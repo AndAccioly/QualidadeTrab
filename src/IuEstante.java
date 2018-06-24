@@ -1,7 +1,34 @@
 import java.util.Scanner;
 
+/**
+* Classe de Interface de usuário. As interfaces implementadas nesse projeto são simples com contato por terminal com o
+* usuário. Elas se comunicam com as classes de negócio para lógica de manejamento de dados.
+* <p>
+* A classe IuEstante possui todos os métodos de interação com o usuário relativos à estante. São eles: adicionar livro 
+* na estante, remover livro da estante, consultar dados de livro, consultar usuário, escrever resenha de livro e 
+* procurar livro para troca.
+*
+* @author Andre Accioly
+* @author Tiago Kfouri
+* @version %I%, %G%
+* @since 1.0
+* @see NegocioEstante
+* @see Pessoa
+* @see Livro
+* @see Estante
+*/
 class IuEstante{
 
+	/**
+	* Método que mostra a estante do usuário. Depois mostra um menu com as opções que o usuário pode 
+	* fazer com a estante.
+	*
+	* @param p 			a pessoa cuja estante será mostrada
+	* @return 			um inteiro 0, caso sucesso
+	* @see Estante
+	* @see Livro
+	* @since 			1.0
+	*/
 	public static int mostrarEstante(Pessoa p){
 		Scanner reader = new Scanner(System.in);
 		int opcao = 0;
@@ -58,12 +85,14 @@ class IuEstante{
 		return e;
 	}
 
-//@todo
+
 	/**
-	* ...
+	* Método que pergunta para o usuário o nome de um livro a ser removido da estante e depois 
+	* remove o livro, caso encontre. Depois pergunta se quer remover outro livro.
 	*
-	* @param param 	descricao
-	* @return 		retorno
+	* @param e 		a estante cujo livro será procurado
+	* @return 		a estante modificada agora sem o livro, caso tenha removido ou a estante intácta, 
+	*				caso não tenha encontrado o livro
 	* @since 		1.0
 	*/
 	private static Estante removerDaEstante(Estante e){
@@ -98,6 +127,13 @@ class IuEstante{
 		return e;
 	}
 
+	/**
+	* Método que permite ao usuário escrever uma resenha sobre um livro específico, que não precisa estar na 
+	* estante. 
+	*
+	* @return 		0, caso sucesso
+	* @since 		1.0
+	*/
 	private static int escreverResenha(){
 		// falta salvar no banco a resenha
 		Scanner reader = new Scanner(System.in);
@@ -128,11 +164,15 @@ class IuEstante{
 		return 0;
 	}
 
+//@todo
+	/**
+	* ...
+	*
+	* @param param 	descricao
+	* @return 		retorno
+	* @since 		1.0
+	*/
 	private static int informarTroca(){
-		return 0;
-	}
-
-	private static int procurarTroca(){
 		return 0;
 	}
 
@@ -142,6 +182,17 @@ class IuEstante{
 	*
 	* @param param 	descricao
 	* @return 		retorno
+	* @since 		1.0
+	*/
+	private static int procurarTroca(){
+		return 0;
+	}
+
+	/**
+	* Método que permite ao usuário procurar por um livro específico. Caso encontre, todas as informações 
+	* do livro serão mostradas na tela para o usuário.
+	*
+	* @return 		0, caso sucesso
 	* @since 		1.0
 	*/
 	private static int consultarLivro(){
@@ -170,12 +221,11 @@ class IuEstante{
 		return 0;
 	}
 
-//@todo
 	/**
-	* ...
+	* Método que permite ao usuário procurar por um usuário específico. Caso encontre, todas as informações 
+	* do livro serão mostradas na tela para o usuário.
 	*
-	* @param param 	descricao
-	* @return 		retorno
+	* @return 		0, caso sucesso
 	* @since 		1.0
 	*/
 	private static int consultarUsuario(){

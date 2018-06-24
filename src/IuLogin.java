@@ -1,5 +1,16 @@
 import java.util.Scanner;
 
+/**
+* Classe de Interface de usuário. As interfaces implementadas nesse projeto são simples com contato por terminal com o
+* usuário. Elas se comunicam com as classes de negócio para lógica de manejamento de dados.
+* <p>
+* A classe IuLogin cuida de fazer o login do usuário, verificando se seu usuário e senha estão corretos
+*
+* @author Andre Accioly
+* @author Tiago Kfouri
+* @version %I%, %G%
+* @since 1.0
+*/
 class IuLogin{
 	public static void teste(){
 		login();

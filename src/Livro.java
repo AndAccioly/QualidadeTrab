@@ -44,6 +44,7 @@ class Livro{
 	* @param cod 			o codigo do livro.
 	* @param genero 		o genero do livro.
 	* @param quantidade 	a quantidade de livros.
+	* @param resenhas 		uma lista de strings, onde cada elemento é uma resenha escrita por um usuário
 	* @see Livro
 	* @since 1.0
 	*/
@@ -57,14 +58,32 @@ class Livro{
 		this.resenhas = resenhas;
 	}
 
+	/**
+	* Metodo para pegar as resenhas do livro.
+	*
+	* @return 	uma lista de strings, onde cada elemento é uma resenha escrita por um usuário
+	* @since 	1.0
+	*/
 	public List<String> getResenhas(){
 		return this.resenhas;
 	}
 
+	/**
+	* Seta as resenhas do livro.
+	*
+	* @param resenhas 	as resenhas escritas sobre oo livro
+	* @since 			1.0
+	*/
 	public void setResenhas(List<String> resenhas){
 		this.resenhas = resenhas;
 	}
 
+	/**
+	* Adiciona uma resenha à lista de resenhas do livro.
+	*
+	* @param resenha 	a resenha escrita sobre oo livro
+	* @since 			1.0
+	*/
 	public void adicionarResenha(String resenha){
 		this.resenhas.add(resenha);
 	}
