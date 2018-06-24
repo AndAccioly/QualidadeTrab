@@ -6,8 +6,8 @@ import java.util.Scanner;
 * diretamente, necessitando dos métodos das classes de Persist para manusear os dados necessários no banco de dados.
 * <p>
 * A classe NegocioEstante possui todos os métodos para tranferência de dados com o banco de dados relacionados com a estante. 
-* As operações possíveis são: colocar na estante, remover da estante, escrever resenha, informar troca, procurar troca, 
-* consultar livro e consultar usuário.
+* As operações possíveis são: criar livro, colocar na estante, buscar livro, remover da estante, escrever resenha, informar 
+* troca, procurar troca, consultar livro e consultar usuário.
 *
 * @author Andre Accioly
 * @author Tiago Kfouri
@@ -19,6 +19,17 @@ import java.util.Scanner;
 class NegocioEstante{
 
 
+	/**
+	* Método para ccriar um novo objeto Livro e gravá-lo no banco de dados
+	*
+	* @param titulo 		o titulo do livro
+	* @param nomeAutor 		o nome do autor do livro
+	* @param dtPublicacao 	a data de publicação do livro
+	* @param genero 		O gênero literário do livro
+	* @return 				um objeto Livro com os dados passados por parâmetro
+	* @see PersistLivro
+	* @since 				1.0
+	*/
 	public static Livro criarLivro(String titulo, String nomeAutor, String dtPublicacao, String genero){
 		PersistLivro persistLivro = new PersistLivro();
 		Livro livro = new Livro();
@@ -58,8 +69,15 @@ class NegocioEstante{
 		return e;
 	}
 
-
-
+	/**
+	* Método para buscar um livro no banco de dados a partir de seu título
+	*
+	* @param titulo o titulo do livro
+	* @return 		um objeto Livro com as informações do livro procurado pelo título
+	* @see PersistLivro
+	* @see Livro
+	* @since 		1.0
+	*/
 	public static Livro buscarLivro(String titulo){
 		PersistLivro persistLivro = new PersistLivro();
 		Livro livro;
@@ -123,12 +141,11 @@ class NegocioEstante{
 		return result;
 	}
 
-//@todo
 	/**
-	* ...
+	* Método para listar todas as pessoas que estão procurando um livro específico
 	*
-	* @param param 	descricao
-	* @return 		retorno
+	* @param titulo	o titulo do livro cujas pessoas estão à procura
+	* @return 		uma lista com todas as pessoas que estão à procura do livro especificado
 	* @since 		1.0
 	*/
 	public static List<Pessoa> procurarTroca(String titulo){
