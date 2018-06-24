@@ -49,13 +49,11 @@ class PersistLivro{
 	*/	
 	public int gravarLivro(Livro livro){
 		String str = livro.camposEmStr() + endline;
-		//System.out.println("Salvando livro - " + str );
 
 		for(Livro l : this.lerTodosLivros()){
-			// if(livro.getCod().equals(l.getCod())){
-			// 	System.out.println("Livro ja estava adicionado");
-			// 	break;
-			// }
+			if(livro.getCod().equals(l.getCod())){
+				l.setQuantidade(l.getQuantidade() + 1);
+			}
 			str = str + l.camposEmStr() + endline ;
 		}
 		
@@ -107,7 +105,6 @@ class PersistLivro{
 			}
 		}
 		
-		System.out.println("Livro não encontrado.");
 		return null;
 	}
 
@@ -128,7 +125,6 @@ class PersistLivro{
 			}
 		}
 		
-		System.out.println("Livro não encontrado.");
 		return null;
 	}
 
@@ -144,10 +140,8 @@ class PersistLivro{
 	public int somarQuantLiv(String cod, int quant){
 		String str = "";
 		int encontrado = 1;
-		System.out.println("Adicionando quantidade livro");
 
 		for(Livro l : this.lerTodosLivros()){
-			System.out.println(l.getCod());
 			if(cod.equals(l.getCod())){
 				l.setQuantidade(l.getQuantidade() + quant);
 				str = str + l.camposEmStr() + endline;
@@ -173,13 +167,10 @@ class PersistLivro{
 	*/
 	public int subtrairQuantLiv(String cod, int quant){
 		String str = "";
-		System.out.println("Subtraindo " + quant + " do livro de codigo " + cod);
 		for(Livro l : this.lerTodosLivros()){
-			System.out.println(l.getCod());
 			if(cod.equals(l.getCod())){
 				l.setQuantidade(l.getQuantidade() - quant);
 				if(l.getQuantidade() < 0){						//quantidade insuficiente em estoque
-					System.out.println("Quantidade em estoque insuficiente.");
 					return 1;
 				}else{
 					str = str + l.camposEmStr() + endline;
@@ -204,7 +195,6 @@ class PersistLivro{
 	*/
 	public List<Livro> lerTodosLivros(){
 		List<Livro> livros = new ArrayList<Livro>();
-		//System.out.println("\nLendo todos os livros");
 
 		try{
 			BufferedReader br = new BufferedReader(new FileReader(linkBdLivro));
@@ -217,12 +207,8 @@ class PersistLivro{
 
 		}catch (Exception e){
 			e.printStackTrace();
-			System.out.println("Erro na leitura de todos os livros do banco.");
+			System.out.println("Erro na leitura de livros no banco.");
 		}
-
-		// for(Livro l : livros){
-		// 	System.out.println(l.camposEmStr());
-		// }
 
 		return livros;
 	}
@@ -242,7 +228,7 @@ class PersistLivro{
    			bw.close();
 
 		}catch(Exception e){
-			System.out.println("Erro na escrita do arquivo");
+			System.out.println("Erro na escrita do arquivo de livros.");
 			return 1;
 		}
 
@@ -279,11 +265,7 @@ class PersistLivro{
 		for(Livro l : this.lerTodosLivros()){
 			if(!l.getCod().equals(cod)){
 				str = str + l.camposEmStr() + endline;
-			}else{
-				System.out.println("Livro deletado" + l.camposEmStr());
-				//faz nada (ou seja, so adiciona na string que vai ser escrita no arquivo se o livro for diferente do que ta sendo deletado)
-			}
-			
+			}			
 		}
 
 		gravarString(str);

@@ -45,7 +45,6 @@ class PersistPessoa{
 	*/	
 	public int gravarPessoa(Pessoa pessoa){
 		String str = pessoa.camposEmStr() + endline;
-		System.out.println("Salvando pessoa - " + str );
 
 		for(Pessoa p : this.lerTodasPessoas()){
 			str = str + p.camposEmStr() + endline ;
@@ -66,7 +65,6 @@ class PersistPessoa{
 	*/
 	public List<Pessoa> lerTodasPessoas(){
 		List<Pessoa> pessoas = new ArrayList<Pessoa>();
-		//System.out.println("\nLendo todas as pessoas");
 
 		try{
 			BufferedReader br = new BufferedReader(new FileReader(linkBdPessoa));
@@ -79,13 +77,9 @@ class PersistPessoa{
 
 		}catch (Exception e){
 			e.printStackTrace();
-			System.out.println("Erro na leitura de todas as pessoas do banco.");
+			System.out.println("Erro na leitura de pessoas do banco.");
 			return null;
 		}
-
-		// for(Pessoa p : pessoas){
-		// 	System.out.println(p.camposEmStr());
-		// }
 
 		return pessoas;
 	}
@@ -127,7 +121,6 @@ class PersistPessoa{
 		String str = "";
 		PersistLivro persistLivro = new PersistLivro();
 		Livro livro = persistLivro.buscarLivroNome(titulo);
-		System.out.println("Colocando livro para troca");
 		for(Pessoa p : this.lerTodasPessoas()){
 			if(p.getNome().equals(pessoa.getNome())){
 				Estante e = p.getEstante();
@@ -196,10 +189,7 @@ class PersistPessoa{
 		for(Pessoa p : this.lerTodasPessoas()){
 			if(!p.getApelido().equals(apelido)){
 				str = str + p.camposEmStr() + endline;
-			}else{
-				System.out.println("Pessoa deletada" + p.camposEmStr());
-			}
-			
+			}			
 		}
 
 		gravarString(str);
@@ -222,7 +212,7 @@ class PersistPessoa{
 	 		bw.close();
 
 		}catch(Exception e){
-			System.out.println("Erro na escrita do arquivo");
+			System.out.println("Erro na escrita no arquivo de pessoas.");
 			return 1;
 		}
 		return 0;
@@ -253,9 +243,7 @@ class PersistPessoa{
 			Livro l;
 			String codigo = vetor[i];
 			if(codigo.contains("T")){
-				System.out.println("T---> " + codigo);
 				codigo = codigo.substring(1, 7);
-				System.out.println("SEM T---> " + codigo);
 			}
 
 			l = persistLivro.buscarLivro(codigo);

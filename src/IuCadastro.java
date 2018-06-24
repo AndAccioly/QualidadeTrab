@@ -29,6 +29,7 @@ class IuCadastro{
 	public static int cadastrar(){
 		//PersistPessoa persistPessoa = new PersistPessoa();
 		Scanner reader = new Scanner(System.in);
+		System.out.println("\n\n\n ------------ CADASTRO --------------");
 		System.out.println("Insira seu nome: ");
 		String nome = reader.nextLine();
 
