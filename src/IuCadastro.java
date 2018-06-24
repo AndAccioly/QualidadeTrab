@@ -44,7 +44,7 @@ class IuCadastro{
 
 		if(NegocioCadastro.validarCadastro(nome, apelido, senha, telefone) == 0){
 			System.out.println("Pessoa cadastrada com sucesso.");
-			IuLogin.teste();
+			IuLogin.login();
 		}else{
 			System.out.println("Erro na validacao de dados");
 		}

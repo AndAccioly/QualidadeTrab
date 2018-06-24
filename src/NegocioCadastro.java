@@ -136,6 +136,9 @@ class NegocioCadastro{
 	private static Boolean validarApelido(String apelido){
 		PersistPessoa persistPessoa = new PersistPessoa();
 		Pessoa p = persistPessoa.buscarPesPorApel(apelido);
+		if(p != null){
+			return false;
+		}
 		return true;
 	}
 
