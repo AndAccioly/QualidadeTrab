@@ -32,9 +32,9 @@ class IuEstante{
 			reader.nextLine();
 
 			if(opcao == 1){
-				e = colocarNaEstante(e);
+				e = colocarNaEstante(e, p);
 			}else if(opcao == 2){
-				e = removerDaEstante(e);
+				e = removerDaEstante(e, p);
 			}else if(opcao == 3){
 				consultarLivro();
 			}else if(opcao == 4){
@@ -54,7 +54,48 @@ class IuEstante{
 	* @return 		retorno
 	* @since 		1.0
 	*/
-	private static Estante colocarNaEstante(Estante e){
+	private static Estante colocarNaEstante(Estante e, Pessoa p){
+		PersistPessoa persistPessoa = new PersistPessoa();
+		Scanner reader = new Scanner(System.in);
+		PersistLivro persistLivro = new PersistLivro();
+		String opcao = "";
+
+		while(!opcao.equals("n") && !opcao.equals("N")){
+			int result = 1;
+			Livro livro = new Livro();
+			System.out.println("\n\n\n ------------ ADICIONAR LIVRO --------------");
+			System.out.println("Escreva os dados do livro: ");
+			System.out.println("Titulo: ");
+			String titulo = reader.nextLine();
+			System.out.println("Nome do autor: ");
+			String nomeAutor = reader.nextLine();
+			System.out.println("Data de publicacao: ");
+			String dtPublicacao = reader.nextLine();
+			System.out.println("Genero: ");
+			String genero = reader.nextLine();
+			
+			livro.setCod(persistLivro.geraCodigo());
+			livro.setTitulo(titulo);
+			livro.setNomeAutor(nomeAutor);
+			livro.setDtPublicacao(dtPublicacao);
+			livro.setGenero(genero);
+			livro.setQuantidade(1);
+
+			result =  persistLivro.gravarLivro(livro);
+
+			System.out.println("\n\n\n ------------ RESULTADO --------------");
+			if(result == 0){
+				e.adicionaLivro(livro);
+				persistPessoa.associarLivro(livro, p);
+				System.out.println("Livro adicionado com sucesso.");
+			}else{ 
+				System.out.println("Erro ao adicionar livro.");
+			}
+
+			System.out.println("\n\nAdicionar outro? (s/n) ");
+			opcao = reader.nextLine();
+		}
+
 		return e;
 	}
 
@@ -66,9 +107,10 @@ class IuEstante{
 	* @return 		retorno
 	* @since 		1.0
 	*/
-	private static Estante removerDaEstante(Estante e){
+	private static Estante removerDaEstante(Estante e, Pessoa p){
 		Scanner reader = new Scanner(System.in);
 		PersistLivro persistLivro = new PersistLivro();
+		PersistPessoa persistPessoa = new PersistPessoa();
 		String opcao = "";
 		String nomeLivro;
 
@@ -79,14 +121,17 @@ class IuEstante{
 			System.out.println("Escreva o nome do livro para ser removido: ");
 			nomeLivro = reader.nextLine();
 			livro =  persistLivro.buscarLivroNome(nomeLivro);
-			contem = e.removeLivro(livro);
+			if(livro!= null){
+				contem = e.removeLivro(livro);
+			}
 
 			System.out.println("\n\n\n ------------ RESULTADO --------------");
 			if(livro == null){
 				System.out.println("Livro nao encontrado.");
-			}else if(contem == 0){
+			}else if(contem == 1){
 				System.out.println("Livro nao pertence a sua estante.");
-			}else{ 
+			}else{
+				persistPessoa.desassociarLivro(livro, p);
 				persistLivro.subtrairQuantLiv(livro.getCod(), 1);
 				System.out.println("\nLivro removido.");
 			}
@@ -119,7 +164,7 @@ class IuEstante{
 			}else{ 
 				System.out.println("Resenha: ");
 				resenha = reader.nextLine();
-				livro.adicionarResenha(resenha);
+				persistLivro.escreverResenha(livro, resenha);
 			}
 
 			System.out.println("\nNova resenha? (s/n) ");
@@ -148,6 +193,7 @@ class IuEstante{
 		Scanner reader = new Scanner(System.in);
 		PersistLivro persistLivro = new PersistLivro();
 		String opcao = "";
+		int i = 0;
 		String nomeLivro;
 		Livro livro = null;
 
@@ -162,6 +208,10 @@ class IuEstante{
 				System.out.println("Livro nao encontrado.");
 			}else{ 
 				System.out.println(livro.getTitulo() + " - " + livro.getNomeAutor() + " - " + livro.getDtPublicacao() + " - " + livro.getGenero());
+				for(String s : livro.getResenhas()){
+					i++;
+					System.out.println("\nResenha " + i + ": " + s + "\n");
+				}
 			}
 
 			System.out.println("\nNova consulta? (s/n) ");

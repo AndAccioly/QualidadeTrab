@@ -29,8 +29,10 @@ class NegocioLogin{
 		Pessoa p = persistPessoa.buscarPesPorApel(apelido);
 		String senhaCripto = criptografarSenha(senha);
 
-		if(p.getSenha().equals(senhaCripto) && p != null){
-			return p;
+		if(p != null){
+			if(p.getSenha().equals(senhaCripto)){
+				return p;
+			}
 		}
 
 		return null;

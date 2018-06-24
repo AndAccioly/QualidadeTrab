@@ -64,6 +64,32 @@ class PersistLivro{
 		return 0;
 	}
 
+	public String geraCodigo(){
+		String codComp = "";
+		String codFinal = "000000";
+		for(Livro l : this.lerTodosLivros()){
+			codComp = l.getCod();
+			if(Integer.parseInt(codComp) > Integer.parseInt(codFinal)){
+				codFinal = codComp;
+			}
+		}
+
+		codFinal = Integer.toString(Integer.parseInt(codFinal) + 1);
+		if(codFinal.length() == 1){
+			codFinal = "00000" + codFinal;
+		}else if (codFinal.length() == 2){
+			codFinal = "0000" + codFinal;
+		}else if (codFinal.length() == 3){
+			codFinal = "000" + codFinal;
+		}else if (codFinal.length() == 4){
+			codFinal = "00" + codFinal;
+		}else if (codFinal.length() == 5){
+			codFinal = "0" + codFinal;
+		}
+		
+		return codFinal;
+	}
+
 	/**
 	* Método para buscar um objeto da classe Livro do banco de dados através de seu código.
 	* Caso não encontre, é printado uma mensagem de alerta na tela e retorna-se null.
@@ -147,7 +173,7 @@ class PersistLivro{
 	*/
 	public int subtrairQuantLiv(String cod, int quant){
 		String str = "";
-
+		System.out.println("Subtraindo " + quant + " do livro de codigo " + cod);
 		for(Livro l : this.lerTodosLivros()){
 			System.out.println(l.getCod());
 			if(cod.equals(l.getCod())){
@@ -178,7 +204,7 @@ class PersistLivro{
 	*/
 	public List<Livro> lerTodosLivros(){
 		List<Livro> livros = new ArrayList<Livro>();
-		System.out.println("\nLendo todos os livros");
+		//System.out.println("\nLendo todos os livros");
 
 		try{
 			BufferedReader br = new BufferedReader(new FileReader(linkBdLivro));
@@ -220,6 +246,21 @@ class PersistLivro{
 			return 1;
 		}
 
+		return 0;
+	}
+
+
+
+	public int escreverResenha(Livro livro, String resenha){
+		String str = "";
+		for(Livro l : this.lerTodosLivros()){
+			if(l.getTitulo().equals(livro.getTitulo())){
+				str = str + l.camposEmStr() + ";" + resenha + endline ;
+			}else{
+				str = str + l.camposEmStr() + endline ;
+			}
+		}
+		gravarString(str);
 		return 0;
 	}
 

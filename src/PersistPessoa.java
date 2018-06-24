@@ -66,7 +66,7 @@ class PersistPessoa{
 	*/
 	public List<Pessoa> lerTodasPessoas(){
 		List<Pessoa> pessoas = new ArrayList<Pessoa>();
-		System.out.println("\nLendo todas as pessoas");
+		//System.out.println("\nLendo todas as pessoas");
 
 		try{
 			BufferedReader br = new BufferedReader(new FileReader(linkBdPessoa));
@@ -83,11 +83,41 @@ class PersistPessoa{
 			return null;
 		}
 
-		for(Pessoa p : pessoas){
-			System.out.println(p.camposEmStr());
-		}
+		// for(Pessoa p : pessoas){
+		// 	System.out.println(p.camposEmStr());
+		// }
 
 		return pessoas;
+	}
+
+	public int associarLivro(Livro l, Pessoa pessoa){
+		String str = "";
+		for(Pessoa p : this.lerTodasPessoas()){
+			if(p.getNome().equals(pessoa.getNome())){
+				str = str + p.camposEmStr() + l.getCod() + endline;
+			}else{
+				str = str + p.camposEmStr() + endline;
+			}
+		}
+
+		gravarString(str);
+
+		return 0;
+	}
+
+	public int desassociarLivro(Livro l, Pessoa pessoa){
+		String str = "";
+		for(Pessoa p : this.lerTodasPessoas()){
+			if(p.getNome().equals(pessoa.getNome())){
+				p.getEstante().removeLivro(l);
+			}
+			str = str + p.camposEmStr() + endline;
+			
+		}
+
+		gravarString(str);
+
+		return 0;
 	}
 
 

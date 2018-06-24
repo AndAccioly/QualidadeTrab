@@ -76,6 +76,7 @@ class IuLogin{
 
 		while(opcao != 0){
 			System.out.println("1. Login");
+			System.out.println("2. Cadastrar");
 			System.out.println("0. Sair");
 			opcao = reader.nextInt();
 			reader.nextLine();
@@ -92,6 +93,8 @@ class IuLogin{
 				}else{
 					System.out.println("Usuario ou senha invalidos");
 				}
+			}else if(opcao == 2){
+				IuCadastro.cadastrar();
 			}
 		}
 	}
