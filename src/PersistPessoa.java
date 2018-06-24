@@ -84,11 +84,20 @@ class PersistPessoa{
 		return pessoas;
 	}
 
-	public int associarLivro(Livro l, Pessoa pessoa){
+/**
+	* Método que escreve no banco um código de livro associado a uma pessoa que tenha ele na estante.
+	*
+	* @param pessoa		a pessoa que terá o livro associado
+	* @param livro		o livro que será associado à pessoa
+	* @return 			0 caso não tenha acontecido erros
+	* @see Pessoa
+	* @since 		1.0
+	*/
+	public int associarLivro(Livro livro, Pessoa pessoa){
 		String str = "";
 		for(Pessoa p : this.lerTodasPessoas()){
 			if(p.getNome().equals(pessoa.getNome())){
-				str = str + p.camposEmStr() + l.getCod() + endline;
+				str = str + p.camposEmStr() + livro.getCod() + endline;
 			}else{
 				str = str + p.camposEmStr() + endline;
 			}
@@ -99,6 +108,15 @@ class PersistPessoa{
 		return 0;
 	}
 
+/**
+	* Método que retira do banco um código de livro associado a uma pessoa que tenha ele na estante.
+	*
+	* @param titulo		o titulo do livro a ser associado
+	* @param pessoa		a pessoa que tera o livro desassociado
+	* @return 			0 caso não tenha acontecido erros
+	* @see Pessoa
+	* @since 		1.0
+	*/
 	public int desassociarLivro(String titulo, Pessoa pessoa){
 		String str = "";
 		PersistLivro persistLivro = new PersistLivro();
@@ -117,6 +135,15 @@ class PersistPessoa{
 		return 0;
 	}
 
+/**
+	* Método que coloca uma tag T no código do livro que a pessoa deseja trocar (ela deve tê-lo em sua estante).
+	*
+	* @param titulo		o titulo do livro a ser colocado para troca
+	* @param pessoa		a pessoa que quer colocá-lo para troca
+	* @return 			0 caso não tenha acontecido erros
+	* @see Pessoa
+	* @since 		1.0
+	*/
 	public int informarTroca(String titulo, Pessoa pessoa){
 		String str = "";
 		PersistLivro persistLivro = new PersistLivro();
@@ -138,6 +165,14 @@ class PersistPessoa{
 		return 0;
 	}
 
+/**
+	* Método que procura por alguém que tenha o livro para a troca.
+	*
+	* @param titulo		o titulo do livro que será buscado
+	* @return 			a lista de pessoas que possuem o livro disponível para troca
+	* @see Pessoa
+	* @since 		1.0
+	*/
 	public List<Pessoa> procurarTroca(String titulo){
 		List<Pessoa> pessoas = new ArrayList<Pessoa>();
 		for(Pessoa p : this.lerTodasPessoas()){
@@ -154,6 +189,14 @@ class PersistPessoa{
 	}
 
 
+/**
+	* Método para buscar uma pessoa no banco pelo seu nome.
+	*
+	* @param nome		nome da pessoa que será procurada
+	* @return 			o objeto encontrado
+	* @see Pessoa
+	* @since 		1.0
+	*/
 	public Pessoa buscarPesPorNome(String nome){
 		for(Pessoa p : this.lerTodasPessoas()){
 			if(p.getNome().equals(nome)){
@@ -164,6 +207,14 @@ class PersistPessoa{
 		return null;
 	}
 
+/**
+	* Método para buscar uma pessoa no banco pelo seu apelido.
+	*
+	* @param apelido	apelido da pessoa que será procurada
+	* @return 			o objeto encontrado
+	* @see Pessoa
+	* @since 		1.0
+	*/
 	public Pessoa buscarPesPorApel(String apelido){
 		for(Pessoa p : this.lerTodasPessoas()){
 			if(p.getApelido().equals(apelido)){

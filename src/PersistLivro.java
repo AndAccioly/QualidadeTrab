@@ -236,7 +236,16 @@ class PersistLivro{
 	}
 
 
-
+/**
+	* Método para adicionar uma resenha a um livro no banco.
+	*
+	* @param livro 		o codigo do livro que terá a resenha feita
+	* @param resenha 	a resenha que será adicionada ao livro
+	* @return 			0, caso sucesso
+	* @see Livro
+	* @see lerTodosLivros
+	* @since 1.0
+	*/
 	public int escreverResenha(Livro livro, String resenha){
 		String str = "";
 		for(Livro l : this.lerTodosLivros()){
