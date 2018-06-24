@@ -1,6 +1,6 @@
-class MainTeste{
+class TesteMain{
 	public static void main(String[] args){
-		LivroTeste.rodaTeste();
+		TesteIntegracao.rodaTeste();
 		
 	}
 }

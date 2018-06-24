@@ -61,7 +61,6 @@ O desenvolvimento do sistema deve englobar as seguintes atividades.
 
 
 - Quando remove livro, falta diminuir o numero de livros no BD e se for zero remover a entrada do banco (quando adicionar, soma 1)
-- Transferir arquivos da interface para o negocio
 
 CHECKLIST
 - Nomes das variaveis e metodos seguem padrao

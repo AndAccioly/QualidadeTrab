@@ -1,3 +1,6 @@
+import java.util.List;
+import java.util.Scanner;
+
 class NegocioEstante{
 	//@todo
 	/**
@@ -7,7 +10,7 @@ class NegocioEstante{
 	* @return 		retorno
 	* @since 		1.0
 	*/
-	private static Estante colocarNaEstante(Estante e, Pessoa p){
+	public static Estante colocarNaEstante(Estante e, Pessoa p){
 		PersistPessoa persistPessoa = new PersistPessoa();
 		Scanner reader = new Scanner(System.in);
 		PersistLivro persistLivro = new PersistLivro();
@@ -62,7 +65,7 @@ class NegocioEstante{
 	*				caso não tenha encontrado o livro
 	* @since 		1.0
 	*/
-	private static Estante removerDaEstante(Estante e, Pessoa p){
+	public static Estante removerDaEstante(Estante e, Pessoa p){
 		Scanner reader = new Scanner(System.in);
 		PersistLivro persistLivro = new PersistLivro();
 		PersistPessoa persistPessoa = new PersistPessoa();
@@ -105,7 +108,7 @@ class NegocioEstante{
 	* @return 		0, caso sucesso
 	* @since 		1.0
 	*/
-	private static int escreverResenha(){
+	public static int escreverResenha(){
 		// falta salvar no banco a resenha
 		Scanner reader = new Scanner(System.in);
 		PersistLivro persistLivro = new PersistLivro();
@@ -143,7 +146,7 @@ class NegocioEstante{
 	* @return 		retorno
 	* @since 		1.0
 	*/
-	private static int informarTroca(Pessoa p){
+	public static int informarTroca(Pessoa p){
 		Scanner reader = new Scanner(System.in);
 		PersistPessoa persistPessoa = new PersistPessoa();
 		String opcao = "";
@@ -176,7 +179,7 @@ class NegocioEstante{
 	* @return 		retorno
 	* @since 		1.0
 	*/
-	private static int procurarTroca(){
+	public static int procurarTroca(){
 		Scanner reader = new Scanner(System.in);
 		PersistPessoa persistPessoa = new PersistPessoa();
 		String opcao = "";
@@ -217,7 +220,7 @@ class NegocioEstante{
 	* @return 		0, caso sucesso
 	* @since 		1.0
 	*/
-	private static int consultarLivro(){
+	public static int consultarLivro(){
 		Scanner reader = new Scanner(System.in);
 		PersistLivro persistLivro = new PersistLivro();
 		String opcao = "";
@@ -255,7 +258,7 @@ class NegocioEstante{
 	* @return 		0, caso sucesso
 	* @since 		1.0
 	*/
-	private static int consultarUsuario(){
+	public static int consultarUsuario(){
 		Scanner reader = new Scanner(System.in);
 		PersistPessoa persistPessoa = new PersistPessoa();
 		String opcao = "";
