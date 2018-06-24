@@ -1,4 +1,3 @@
-
 import java.io.File;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -9,7 +8,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 /**
-* Classe com todos métodos para trocas de informações com o banco de dados referentes à classe Pessoa.
+* Classe com todos métodos para trocas de informações com o banco de dados referentes à  classe Pessoa.
 *
 * @author Andre Accioly
 * @author Tiago Kfouri
@@ -19,13 +18,13 @@ import java.util.ArrayList;
 */
 class PersistPessoa{
 
-	private String linkBdPessoa = "bd_pessoa.xml";
+	private String linkBdPessoa = "src/src/bd_pessoa.xml";
 	String endline = "\n";
 	private File fPessoa;
 
 	/**
-	* Construtor da classe PeersistPessoa. Inicia o ponteiro para o arquivo xml referente à pessoa, que será
-	* onde serão armazenados os dados.
+	* Construtor da classe PeersistPessoa. Inicia o ponteiro para o arquivo xml referente Ã  pessoa, que serÃ¡
+	* onde serÃ£o armazenados os dados.
 	* 
 	* @see Pessoa
 	* @see PersistPessoa
@@ -36,9 +35,9 @@ class PersistPessoa{
 	}
 
 	/**
-	* Método para salvar um objeto da classe Pessoa no banco de dados
+	* MÃ©todo para salvar um objeto da classe Pessoa no banco de dados
 	*
-	* @param pessoa 	um objeto Pessoa, que será salvo no banco de dados
+	* @param pessoa 	um objeto Pessoa, que serÃ¡ salvo no banco de dados
 	* @return 			0, caso sucesso
 	* @see Pessoa
 	* @since 			1.0
@@ -56,8 +55,8 @@ class PersistPessoa{
 	}
 
 	/**
-	* Método para ler todas as pessoa do banco de dados. Elas não são retirados do banco.
-	* Pode retornar uma exceção caso ocorra algum erro durante a leitura das pessoas no banco de dados.
+	* MÃ©todo para ler todas as pessoa do banco de dados. Elas nÃ£o sÃ£o retirados do banco.
+	* Pode retornar uma exceÃ§Ã£o caso ocorra algum erro durante a leitura das pessoas no banco de dados.
 	*
 	* @return 		uma lista com todas as pessoas (em formato do objeto Pessoa) do banco de dados
 	* @see Pessoa
@@ -85,11 +84,11 @@ class PersistPessoa{
 	}
 
 /**
-	* Método que escreve no banco um código de livro associado a uma pessoa que tenha ele na estante.
+	* MÃ©todo que escreve no banco um cÃ³digo de livro associado a uma pessoa que tenha ele na estante.
 	*
-	* @param pessoa		a pessoa que terá o livro associado
-	* @param livro		o livro que será associado à pessoa
-	* @return 			0 caso não tenha acontecido erros
+	* @param pessoa		a pessoa que terÃ¡ o livro associado
+	* @param livro		o livro que serÃ¡ associado Ã  pessoa
+	* @return 			0 caso nÃ£o tenha acontecido erros
 	* @see Pessoa
 	* @since 		1.0
 	*/
@@ -109,11 +108,11 @@ class PersistPessoa{
 	}
 
 /**
-	* Método que retira do banco um código de livro associado a uma pessoa que tenha ele na estante.
+	* MÃ©todo que retira do banco um cÃ³digo de livro associado a uma pessoa que tenha ele na estante.
 	*
 	* @param titulo		o titulo do livro a ser associado
 	* @param pessoa		a pessoa que tera o livro desassociado
-	* @return 			0 caso não tenha acontecido erros
+	* @return 			0 caso nÃ£o tenha acontecido erros
 	* @see Pessoa
 	* @since 		1.0
 	*/
@@ -136,40 +135,45 @@ class PersistPessoa{
 	}
 
 /**
-	* Método que coloca uma tag T no código do livro que a pessoa deseja trocar (ela deve tê-lo em sua estante).
+	* MÃ©todo que coloca uma tag T no cÃ³digo do livro que a pessoa deseja trocar (ela deve tÃª-lo em sua estante).
 	*
 	* @param titulo		o titulo do livro a ser colocado para troca
-	* @param pessoa		a pessoa que quer colocá-lo para troca
-	* @return 			0 caso não tenha acontecido erros
+	* @param pessoa		a pessoa que quer colocÃ¡-lo para troca
+	* @return 			0 caso nÃ£o tenha acontecido erros
 	* @see Pessoa
 	* @since 		1.0
 	*/
 	public int informarTroca(String titulo, Pessoa pessoa){
 		String str = "";
+		int result = 1;
 		PersistLivro persistLivro = new PersistLivro();
 		Livro livro = persistLivro.buscarLivroNome(titulo);
+		if(livro == null){
+			return 1;
+		}
+		
 		for(Pessoa p : this.lerTodasPessoas()){
 			if(p.getNome().equals(pessoa.getNome())){
 				Estante e = p.getEstante();
-				int result = e.removeLivro(livro);
+				result = e.removeLivro(livro);
 				if(result == 0){
 					livro.setCod("T" + livro.getCod());
 					e.adicionaLivro(livro);
+				}
 			}
-
 			str = str + p.camposEmStr() + endline;
-			}
 		}
+		System.out.println(str);
 		gravarString(str);
 
-		return 0;
+		return result;
 	}
 
 /**
-	* Método que procura por alguém que tenha o livro para a troca.
+	* MÃ©todo que procura por alguÃ©m que tenha o livro para a troca.
 	*
-	* @param titulo		o titulo do livro que será buscado
-	* @return 			a lista de pessoas que possuem o livro disponível para troca
+	* @param titulo		o titulo do livro que serÃ¡ buscado
+	* @return 			a lista de pessoas que possuem o livro disponÃ­vel para troca
 	* @see Pessoa
 	* @since 		1.0
 	*/
@@ -190,9 +194,9 @@ class PersistPessoa{
 
 
 /**
-	* Método para buscar uma pessoa no banco pelo seu nome.
+	* MÃ©todo para buscar uma pessoa no banco pelo seu nome.
 	*
-	* @param nome		nome da pessoa que será procurada
+	* @param nome		nome da pessoa que serÃ¡ procurada
 	* @return 			o objeto encontrado
 	* @see Pessoa
 	* @since 		1.0
@@ -208,9 +212,9 @@ class PersistPessoa{
 	}
 
 /**
-	* Método para buscar uma pessoa no banco pelo seu apelido.
+	* MÃ©todo para buscar uma pessoa no banco pelo seu apelido.
 	*
-	* @param apelido	apelido da pessoa que será procurada
+	* @param apelido	apelido da pessoa que serÃ¡ procurada
 	* @return 			o objeto encontrado
 	* @see Pessoa
 	* @since 		1.0
@@ -226,7 +230,7 @@ class PersistPessoa{
 	}
 
 	/**
-	* Método para deletar uma pessoa do banco de dados. Precisa do apelido da pessoa para conseguir deletar.
+	* MÃ©todo para deletar uma pessoa do banco de dados. Precisa do apelido da pessoa para conseguir deletar.
 	*
 	* @param apelido 		o apelido da pessoa a ser deletado
 	* @return 				0, caso sucesso
@@ -249,8 +253,8 @@ class PersistPessoa{
 	}
 
 	/**
-	* Método auxiliar para gravar uma string no arquivo.
-	* Pode retornar uma exceção caso ocorra algum erro durante a escrita.
+	* MÃ©todo auxiliar para gravar uma string no arquivo.
+	* Pode retornar uma exceÃ§Ã£o caso ocorra algum erro durante a escrita.
 	*
 	* @param str 	a string a ser gravada no arquivo
 	* @return 		0, caso sucesso. 1, caso falhe
@@ -270,7 +274,7 @@ class PersistPessoa{
 	}
 
 	/**
-	* Método auxiliar para transformar uma pessoa no formato de string para um objeto Pessoa
+	* MÃ©todo auxiliar para transformar uma pessoa no formato de string para um objeto Pessoa
 	*
 	* @param str 	a pessoa em formato de string
 	* @return 		a pessoa em formato de objeto
