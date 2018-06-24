@@ -15,7 +15,7 @@
 class NegocioCadastro{
 
 	/**
-	* Método q recebe todos os parâmetros de um objeto Pessoa (nome, apelido, senha e telefone) e verifica se o nome 
+	* Método que recebe todos os parâmetros de um objeto Pessoa (nome, apelido, senha e telefone) e verifica se o nome 
 	* já existe, se o apelido já existe e se o telefone está no formato correto. Ela utiliza dos métodos auxiliares 
 	* da classe NegocioCadastro para fazer isso. São eles: validarNome, validarApelido, validarTelefone e validarSenha.
 	*

@@ -1,10 +1,29 @@
+/**
+* Classe de mediação entre a Interface de Usuário e as classes de Persist. Essa classe não interage com o banco de dados
+* diretamente, necessitando dos métodos das classes de Persist para manusear os dados necessários no banco de dados.
+* <p>
+* A classe NegocioEstante possui todos os métodos para tranferência de dados com o banco de dados relacionados com a estante. 
+* As operações possíveis são: colocar na estante, remover da estante, escrever resenha, informar troca, procurar troca, 
+* consultar livro e consultar usuário.
+*
+* @author Andre Accioly
+* @author Tiago Kfouri
+* @version %I%, %G%
+* @since 1.0
+* @see PersistPessoa
+* @see Pessoa
+*/
 class NegocioEstante{
-	//@todo
+
 	/**
-	* ...
+	* Método para colocar um livro na estante. Ele pergunta os dados do livro para o usuário e o adiciona 
+	* na estante do usuário.
 	*
-	* @param param 	descricao
-	* @return 		retorno
+	* @param e 		a estante do usuário
+	* @param p 		o usuário que quer adicionar o livro na estante
+	* @return 		a estante do usuário, agora com o livro adicionado, caso sucesso, ou sem modificação, 
+	*				caso erro
+	* @see PersistPessoa
 	* @since 		1.0
 	*/
 	private static Estante colocarNaEstante(Estante e, Pessoa p){
@@ -135,12 +154,13 @@ class NegocioEstante{
 		return 0;
 	}
 
-//@todo
 	/**
-	* ...
+	* Método para o usuário informar que deseja realizar uma troca de livro com outro usuário. Ele 
+	* informa o nome do livro que deseja colocar pra trocar.
 	*
-	* @param param 	descricao
-	* @return 		retorno
+	* @param p 		o usuário que irá colocar o livro para troca
+	* @return 		0, caso sucesso
+	* @see persistPessoa
 	* @since 		1.0
 	*/
 	private static int informarTroca(Pessoa p){

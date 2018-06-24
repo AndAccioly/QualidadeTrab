@@ -72,6 +72,14 @@ class Estante{
 		return 0;
 	}
 
+	/**
+	* Metodo que busca um livro na estante pelo seu título.
+	*
+	* @param titulo 	o titulo do livro a ser procurado na estante
+	* @return 			um objeto Livro com o livro procurado. null, caso não encontre
+	* @see 	Livro
+	* @since 			1.0
+	*/
 	public Livro buscaLivro(String titulo){
 		for(Livro l : livros){
 			if(l.getTitulo().equals(titulo)){

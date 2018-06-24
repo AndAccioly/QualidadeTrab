@@ -2,12 +2,12 @@ import java.util.List;
 import java.util.ArrayList;
 /**
 * Classe que representa o objeto Livro. Acerca de cada livro, serão armazenados os seguintes dados: 
-* título, nome do autor, data de publicação, código, gênero literário e numero de livros
+* título, nome do autor, data de publicação, código, gênero literário e número de livros
 *
-* @author Andre Accioly
-* @author Tiago Kfouri
-* @version %I%, %G%
-* @since 1.0
+* @author 	Andre Accioly
+* @author 	Tiago Kfouri
+* @version 	%I%, %G%
+* @since 	1.0
 */
 class Livro{
 	private String titulo;
@@ -19,7 +19,7 @@ class Livro{
 	private List<String> resenhas;
 
 	/**
-	* Construtor da classe Livro. Caso nao seja passado parametro, os campos serao iniciados com campos genericos
+	* Construtor da classe Livro. Caso nao seja passado parametro, os campos serao iniciados com campos genéricos
 	* 
 	* @see Livro
 	* @since 1.0
@@ -46,7 +46,7 @@ class Livro{
 	* @param quantidade 	a quantidade de livros.
 	* @param resenhas 		uma lista de strings, onde cada elemento é uma resenha escrita por um usuário
 	* @see Livro
-	* @since 1.0
+	* @since 				1.0
 	*/
 	public Livro(String titulo, String nomeAutor, String dtPublicacao, String cod, String genero, int quantidade, List<String> resenhas){
 		this.titulo = titulo;

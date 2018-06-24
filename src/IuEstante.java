@@ -9,10 +9,10 @@ import java.util.List;
 * na estante, remover livro da estante, consultar dados de livro, consultar usuário, escrever resenha de livro e 
 * procurar livro para troca.
 *
-* @author Andre Accioly
-* @author Tiago Kfouri
-* @version %I%, %G%
-* @since 1.0
+* @author 	Andre Accioly
+* @author 	Tiago Kfouri
+* @version 	%I%, %G%
+* @since 	1.0
 * @see NegocioEstante
 * @see Pessoa
 * @see Livro
@@ -21,7 +21,7 @@ import java.util.List;
 class IuEstante{
 
 	/**
-	* Método que mostra a estante do usuário. Depois mostra um menu com as opções que o usuário pode 
+	* Método que mostra todos os livros da estante do usuário. Depois mostra um menu com as opções que o usuário pode 
 	* fazer com a estante.
 	*
 	* @param p 			a pessoa cuja estante será mostrada

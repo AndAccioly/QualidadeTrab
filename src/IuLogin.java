@@ -6,13 +6,27 @@ import java.util.Scanner;
 * <p>
 * A classe IuLogin cuida de fazer o login do usuário, verificando se seu usuário e senha estão corretos
 *
-* @author Andre Accioly
-* @author Tiago Kfouri
-* @version %I%, %G%
-* @since 1.0
+* @author 	Andre Accioly
+* @author 	Tiago Kfouri
+* @version 	%I%, %G%
+* @since 	1.0
 */
 class IuLogin{
 
+	/**
+	* Método que mostra a tela de login com as opções de logar, cadastrar novo usuário ou sair. Caso ele 
+	* escolha a opção de logar, pergunta usuário e senha e verifica se eles estão no banco de dados. Depois, 
+	* retorna para esse menu de opções, caso não encontre o usuário, mostrando uma mensagem de que não encontrou 
+	* o usuário. Caso encontre o usuário, é redirecionado para a tela que mostra a estante do usuário. Se 
+	* o usuário escolher cadastrar, ele é redirecionado para a tela de cadastro. Se ele quiser sair, o método 
+	* termina.
+	*
+	* @return 			void
+	* @see Pessoa
+	* @see mostrarEstante
+	* @see cadastrar
+	* @since 			1.0
+	*/	
 	public static void login(){
 		int opcao = -1;
 		PersistPessoa persistPessoa = new PersistPessoa();
