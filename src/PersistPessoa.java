@@ -169,6 +169,17 @@ class PersistPessoa{
 		return result;
 	}
 
+	public int removerPessoa(Pessoa pessoa){
+		String str = "";
+		for(Pessoa p : this.lerTodasPessoas()){
+			if(!p.getNome().equals(pessoa.getNome())){
+				str = str + p.camposEmStr() + endline;
+			}
+		}
+		
+		return 0;
+	}
+
 /**
 	* MÃ©todo que procura por alguÃ©m que tenha o livro para a troca.
 	*
