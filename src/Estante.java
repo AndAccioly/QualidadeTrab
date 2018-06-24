@@ -72,6 +72,15 @@ class Estante{
 		return 0;
 	}
 
+	public Livro buscaLivro(String titulo){
+		for(Livro l : livros){
+			if(l.getTitulo().equals(titulo)){
+				return l;
+			}
+		}
+		return null;
+	}
+
 	/**
 	* Metodo que remove o livro especificado da estante.
 	*

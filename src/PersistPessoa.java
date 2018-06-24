@@ -105,11 +105,14 @@ class PersistPessoa{
 		return 0;
 	}
 
-	public int desassociarLivro(Livro l, Pessoa pessoa){
+	public int desassociarLivro(String titulo, Pessoa pessoa){
 		String str = "";
+		PersistLivro persistLivro = new PersistLivro();
+		Livro livro = persistLivro.buscarLivroNome(titulo);
+
 		for(Pessoa p : this.lerTodasPessoas()){
 			if(p.getNome().equals(pessoa.getNome())){
-				p.getEstante().removeLivro(l);
+				p.getEstante().removeLivro(livro);
 			}
 			str = str + p.camposEmStr() + endline;
 			
@@ -118,6 +121,43 @@ class PersistPessoa{
 		gravarString(str);
 
 		return 0;
+	}
+
+	public int informarTroca(String titulo, Pessoa pessoa){
+		String str = "";
+		PersistLivro persistLivro = new PersistLivro();
+		Livro livro = persistLivro.buscarLivroNome(titulo);
+		System.out.println("Colocando livro para troca");
+		for(Pessoa p : this.lerTodasPessoas()){
+			if(p.getNome().equals(pessoa.getNome())){
+				Estante e = p.getEstante();
+				int result = e.removeLivro(livro);
+				if(result == 0){
+					livro.setCod("T" + livro.getCod());
+					e.adicionaLivro(livro);
+			}
+
+			str = str + p.camposEmStr() + endline;
+			}
+		}
+		gravarString(str);
+
+		return 0;
+	}
+
+	public List<Pessoa> procurarTroca(String titulo){
+		List<Pessoa> pessoas = new ArrayList<Pessoa>();
+		for(Pessoa p : this.lerTodasPessoas()){
+			Estante e = p.getEstante();
+			Livro l = e.buscaLivro(titulo);
+			if(l != null){
+				if(l.getCod().contains("T")){
+					pessoas.add(p);
+				}
+			}
+		}
+
+		return pessoas;
 	}
 
 
@@ -211,7 +251,17 @@ class PersistPessoa{
 		
 		for(i = 5; i < vetor.length; i++){
 			Livro l;
-			l = persistLivro.buscarLivro(vetor[i]);
+			String codigo = vetor[i];
+			if(codigo.contains("T")){
+				System.out.println("T---> " + codigo);
+				codigo = codigo.substring(1, 7);
+				System.out.println("SEM T---> " + codigo);
+			}
+
+			l = persistLivro.buscarLivro(codigo);
+			if(vetor[i].contains("T")){
+				l.setCod("T" + l.getCod());
+			}
 			if(l != null){
 				e.adicionaLivro(l);
 			}

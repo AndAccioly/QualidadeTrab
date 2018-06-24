@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.List;
 
 /**
 * Classe de Interface de usuário. As interfaces implementadas nesse projeto são simples com contato por terminal com o
@@ -32,7 +33,7 @@ class IuEstante{
 	public static int mostrarEstante(Pessoa p){
 		Scanner reader = new Scanner(System.in);
 		int opcao = 0;
-		while(opcao != 7){
+		while(opcao != 8){
 			int i = 0;
 			Estante e = p.getEstante();
 
@@ -52,8 +53,9 @@ class IuEstante{
 			System.out.println("3. Consultar dados de livro");
 			System.out.println("4. Consultar usuario");
 			System.out.println("5. Escrever resenha de livro");
-			System.out.println("6. Procurar livro para troca");
-			System.out.println("7. Sair");
+			System.out.println("6. Colocar livro para troca");
+			System.out.println("7. Procurar livro para troca");
+			System.out.println("8. Encerrar sessao");
 
 			opcao = reader.nextInt();
 			reader.nextLine();
@@ -68,6 +70,10 @@ class IuEstante{
 				consultarUsuario();
 			}else if(opcao == 5){
 				escreverResenha();
+			}else if(opcao == 6){
+				informarTroca(p);
+			}else if(opcao == 7){
+				procurarTroca();
 			}
 		}
 		return 0;
@@ -141,15 +147,15 @@ class IuEstante{
 		PersistLivro persistLivro = new PersistLivro();
 		PersistPessoa persistPessoa = new PersistPessoa();
 		String opcao = "";
-		String nomeLivro;
+		String titulo;
 
 		while(!opcao.equals("n") && !opcao.equals("N")){
 			int contem = 0;
 			Livro livro = null;
 			System.out.println("\n\n\n ------------ REMOVER LIVRO --------------");
 			System.out.println("Escreva o nome do livro para ser removido: ");
-			nomeLivro = reader.nextLine();
-			livro =  persistLivro.buscarLivroNome(nomeLivro);
+			titulo = reader.nextLine();
+			livro =  persistLivro.buscarLivroNome(titulo);
 			if(livro!= null){
 				contem = e.removeLivro(livro);
 			}
@@ -160,7 +166,7 @@ class IuEstante{
 			}else if(contem == 1){
 				System.out.println("Livro nao pertence a sua estante.");
 			}else{
-				persistPessoa.desassociarLivro(livro, p);
+				persistPessoa.desassociarLivro(titulo, p);
 				persistLivro.subtrairQuantLiv(livro.getCod(), 1);
 				System.out.println("\nLivro removido.");
 			}
@@ -184,15 +190,15 @@ class IuEstante{
 		Scanner reader = new Scanner(System.in);
 		PersistLivro persistLivro = new PersistLivro();
 		String opcao = "";
-		String nomeLivro;
+		String titulo;
 		Livro livro = null;
 		String resenha = "";
 
 		while(!opcao.equals("n") && !opcao.equals("N")){
 			System.out.println("\n\n\n ------------ ESCREVER RESENHA --------------");
 			System.out.println("Escreva o nome do livro para a resenha: ");
-			nomeLivro = reader.nextLine();
-			livro =  persistLivro.buscarLivroNome(nomeLivro);
+			titulo = reader.nextLine();
+			livro =  persistLivro.buscarLivroNome(titulo);
 
 			System.out.println("\n\n\n ------------ RESULTADO --------------");
 			if(livro == null){
@@ -217,7 +223,28 @@ class IuEstante{
 	* @return 		retorno
 	* @since 		1.0
 	*/
-	private static int informarTroca(){
+	private static int informarTroca(Pessoa p){
+		Scanner reader = new Scanner(System.in);
+		PersistPessoa persistPessoa = new PersistPessoa();
+		String opcao = "";
+		String titulo;
+
+		while(!opcao.equals("n") && !opcao.equals("N")){
+			int result = 0;
+			System.out.println("\n\n\n ------------ INFORMAR TROCA DE LIVRO --------------");
+			System.out.println("Escreva o nome do livro que deseja dar: ");
+			titulo = reader.nextLine();
+			result = persistPessoa.informarTroca(titulo, p);
+
+			System.out.println("\n\n\n ------------ RESULTADO --------------");
+			if(result == 0){
+				System.out.println("Livro nao encontrado.");
+			}
+
+			System.out.println("\nInformar outro interesse para troca? (s/n) ");
+			opcao = reader.nextLine();
+		}
+
 		return 0;
 	}
 
@@ -230,6 +257,36 @@ class IuEstante{
 	* @since 		1.0
 	*/
 	private static int procurarTroca(){
+		Scanner reader = new Scanner(System.in);
+		PersistPessoa persistPessoa = new PersistPessoa();
+		String opcao = "";
+		String titulo;
+
+		while(!opcao.equals("n") && !opcao.equals("N")){
+			int i = 0;
+			System.out.println("\n\n\n ------------ CONSULTAR PESSOA PARA TROCA DE LIVRO --------------");
+			System.out.println("Escreva o nome do livro que deseja obter: ");
+			titulo = reader.nextLine();
+			List<Pessoa> pessoas = persistPessoa.procurarTroca(titulo);
+
+			System.out.println("\n\n\n ------------ RESULTADO --------------");
+			if(pessoas != null){
+				if(pessoas.size() == 0){
+					System.out.println("Livro nao encontrado.");
+				}else{
+					System.out.println("Pessoas que tem o livro:\n");
+					for(Pessoa p : pessoas){
+						i++;
+						System.out.println(i + ". " + p.getNome() + "-" + p.getApelido() + "-" + p.getTelefone());
+					}
+				}
+			}else{
+					System.out.println("Livro nao encontrado.");
+			}
+
+			System.out.println("\nInformar outro interesse para troca? (s/n) ");
+			opcao = reader.nextLine();
+		}
 		return 0;
 	}
 

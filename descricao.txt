@@ -18,7 +18,8 @@ Uma vez autenticado, o leitor terá acesso aos seguintes serviços:
 2) incluir exemplar em estante
 3) remover exemplar de estante
 4) criar resenha
-5) informar se deseja trocar exemplar e procurar usuário.
+5) informar se deseja trocar exemplar
+6) procurar usuário.
 A consulta a dados de livro será por título e resultará na seguinte informação:
 título, autor, data de publicação, gênero literário e resenhas acerca do livro. 
 
@@ -56,3 +57,14 @@ O desenvolvimento do sistema deve englobar as seguintes atividades.
 4. Forneça os artefatos produzidos via e-mail ou em um CD organizado
 5. Em cada diretório, inclua arquivo LEIAME.PDF com o objetivo do diretório.
 6. Identifique o trabalho com as matrículas dos membros da equipe.
+
+
+
+- Quando remove livro, falta diminuir o numero de livros no BD e se for zero remover a entrada do banco (quando adicionar, soma 1)
+- Transferir arquivos da interface para o negocio
+
+CHECKLIST
+- Nomes das variaveis e metodos seguem padrao
+- Todos os metodos comentados
+- Todos os retornos sao 0 quando n tem erro
+- Remover codigo morto
