@@ -62,6 +62,12 @@ class PersistLivro{
 		return 0;
 	}
 
+	/**
+	* Método para gerar um código novo e sequencial para ser atribuído ao livro
+	* @return 		uma string com o novo código
+	* @see Livro
+	* @since 		1.0
+	*/	
 	public String geraCodigo(){
 		String codComp = "";
 		String codFinal = "000000";

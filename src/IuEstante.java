@@ -79,6 +79,18 @@ class IuEstante{
 		return 0;
 	}
 	
+	/**
+	* Método que pergunta para o usuário todos os dados do livro que será adicionado na estante (titulo, 
+	* nome do autor, data de publicação e gênero literário), cria um novo livro com esses dados e o coloca 
+	* na estante.
+	*
+	* @param e 			a estante da pessoa
+	* @param p 			a pessoa cuja estante será mostrada
+	* @return 			um inteiro 0, caso sucesso
+	* @see Estante
+	* @see Livro
+	* @since 			1.0
+	*/
 	public static Estante colocarNaEstante(Estante e, Pessoa p){
 		Scanner reader = new Scanner(System.in);
 		String opcao = "";
@@ -116,12 +128,13 @@ class IuEstante{
 
 
 	/**
-	* MÃ©todo que pergunta para o usuÃ¡rio o nome de um livro a ser removido da estante e depois 
+	* Método que pergunta para o usuário o nome de um livro a ser removido da estante e depois 
 	* remove o livro, caso encontre. Depois pergunta se quer remover outro livro.
 	*
-	* @param e 		a estante cujo livro serÃ¡ procurado
+	* @param e 		a estante cujo livro será procurado
+	* @param p 		o usuário que irá remover o livro da estante
 	* @return 		a estante modificada agora sem o livro, caso tenha removido ou a estante intÃ¡cta, 
-	*				caso nÃ£o tenha encontrado o livro
+	*				caso não tenha encontrado o livro
 	* @since 		1.0
 	*/
 	public static Estante removerDaEstante(Estante e, Pessoa p){
@@ -187,12 +200,13 @@ class IuEstante{
 		return 0;
 	}
 
-//@todo
 	/**
-	* ...
+	* Método para informar que o usuário quer trocar um livro. Ele informa o livro que quer 
+	* dar e, caso o livro seja encontrado, ele é colcoado para troca. Senão ele avisa na tela 
+	* que o livro não foi encontrado.
 	*
-	* @param param 	descricao
-	* @return 		retorno
+	* @param p 		a pessoa que quer colocar um de seus livros para troca
+	* @return 		0 sempre
 	* @since 		1.0
 	*/
 	public static int informarTroca(Pessoa p){
@@ -221,12 +235,12 @@ class IuEstante{
 		return 0;
 	}
 
-//@todo
 	/**
-	* ...
+	* Método que pergunta para o usuário qual livro ele quer buscar para obter. Se algum outro usuário 
+	* estiver oferecendo esse livro para troca, ele lista todos os usuários que estão oferecendo o livro 
+	* desejado.
 	*
-	* @param param 	descricao
-	* @return 		retorno
+	* @return 		0, sempre
 	* @since 		1.0
 	*/
 	public static int procurarTroca(){

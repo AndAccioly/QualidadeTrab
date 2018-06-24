@@ -134,7 +134,7 @@ class PersistPessoa{
 		return 0;
 	}
 
-/**
+	/**
 	* MÃ©todo que coloca uma tag T no cÃ³digo do livro que a pessoa deseja trocar (ela deve tÃª-lo em sua estante).
 	*
 	* @param titulo		o titulo do livro a ser colocado para troca
@@ -169,6 +169,14 @@ class PersistPessoa{
 		return result;
 	}
 
+	/**
+	* Método que remove uma pessoa específica do banco de dados
+	*
+	* @param pessoa		o objeto Pessoa com a pessoa que será removida do banco de dados
+	* @return 			0, caso sucesso
+	* @see Pessoa
+	* @since 		1.0
+	*/
 	public int removerPessoa(Pessoa pessoa){
 		String str = "";
 		for(Pessoa p : this.lerTodasPessoas()){

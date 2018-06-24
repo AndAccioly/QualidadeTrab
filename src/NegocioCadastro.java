@@ -75,11 +75,11 @@ class NegocioCadastro{
 	}
 
 	/**
-	* Método auxiliar do método validarCadastro para validar um nome de uma pessoa, ou seja, verificar se ele já 
-	* existe no banco de dados.
+	* Método auxiliar do método validarCadastro para validar uma senha de uma pessoa, ou seja, verificar se ela contém 
+	* apenas caracteres e sem repetição
 	*
-	* @param nome 		uma string com o nome que será validado
-	* @return 			um booleano true, caso sucesso
+	* @param senha 		uma string com a senha que será validada
+	* @return 			um booleano true, caso sucesso, e false, caso erro
 	* @see PersistPessoa
 	* @see buscarPessoa
 	* @since 			1.0
@@ -144,8 +144,8 @@ class NegocioCadastro{
 
 
 	/**
-	* Método auxiliar do método validarCadastro para validar um telefone de uma pessoa, ou seja, verificar se ele já 
-	* está no formato correto
+	* Método auxiliar do método validarCadastro para validar um telefone de uma pessoa, ou seja, verificar se ele 
+	* está no formato correto (XX-XXXXXXXXX)
 	*
 	* @param tel 		uma string com o telefone que será validado
 	* @return 			um booleano true, caso sucesso e false, caso erro
