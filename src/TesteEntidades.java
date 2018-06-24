@@ -1,4 +1,3 @@
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,6 +7,7 @@ import org.junit.Test;
 public class TesteEntidades {
 	@Test
 	public void testeEstante(){
+		System.out.println("Inicio de testes da entidade Estante...");
 		Estante e = new Estante();
 		Assert.assertNotNull(e.getLivros());
 		int r;
@@ -48,11 +48,13 @@ public class TesteEntidades {
 		
 		s = e.codEmStr();
 		Assert.assertEquals("cod;cod2;000000;", s);
+		System.out.println("Fim de testes da entidade Estante...");
 		
 	}
 	
 	@Test
 	public void testeLivro(){
+		System.out.println("Inicio de testes da entidade Livro...");
 		String s;
 		Livro l = new Livro();
 		Assert.assertEquals(l.getTitulo(), "Titulo generico");
@@ -92,10 +94,12 @@ public class TesteEntidades {
 		
 		s = l.camposEmStr();
 		Assert.assertEquals(s, "cod2;Titulo2;Nome2;dt2;genero2;1;Resenha1");
+		System.out.println("Fim de testes da entidade Livro...");
 	}
 	
 	@Test
 	public void testePessoa(){
+		System.out.println("Inicio de testes da entidade Pessoa...");
 		Pessoa p = new Pessoa();
 		Assert.assertEquals(p.getNome(), "Nome generico");
 		Estante e = new Estante();
@@ -131,6 +135,7 @@ public class TesteEntidades {
 		
 		s = p.camposEmStr();
 		Assert.assertEquals("nome2;apelido2;senha2;0;telefone2;000000;", s);
+		System.out.println("Fim de testes da entidade Pessoa...");
 		
 		
 	}
