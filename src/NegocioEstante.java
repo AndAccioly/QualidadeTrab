@@ -16,7 +16,7 @@ import java.util.Scanner;
 * @see PersistPessoa
 * @see Pessoa
 */
-class NegocioEstante{
+public class NegocioEstante{
 
 
 	/**
@@ -130,7 +130,6 @@ class NegocioEstante{
 	* @param titulo o titulo do livro que será oferecido para troca
 	* @param p 		o usuário que irá colocar o livro para troca
 	* @return 		0, caso sucesso
-	* @see persistPessoa
 	* @since 		1.0
 	*/
 	public static int informarTroca(String titulo, Pessoa p){

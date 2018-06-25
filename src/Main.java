@@ -6,13 +6,12 @@
 * @version 	%I%, %G%
 * @since 	1.0
 */
-class Main{
+public class Main{
 
 	/**
 	* Método main, para inicializar o programa
 	*
 	* @param args		vetor de argumentos a serem passados. Eles serão ignorados
-	* @return 			void
 	* @see IuLogin
 	* @since 			1.0
 	*/

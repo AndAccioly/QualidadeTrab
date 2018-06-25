@@ -11,7 +11,7 @@
 * @see PersistPessoa
 * @see Pessoa
 */
-class NegocioLogin{
+public class NegocioLogin{
 
 	/**
 	* Método que busca uma pessoa com o apelido e a senha especificados no banco de dados
@@ -21,7 +21,6 @@ class NegocioLogin{
 	* @return 			um objeto Pessoa com os dados da pessoa procurada, caso sucesso. null, caso erro
 	* @see Pessoa
 	* @see PersistPessoa
-	* @see buscarPessoa
 	* @since 1.0
 	*/	
 	public static Pessoa login(String apelido, String senha){

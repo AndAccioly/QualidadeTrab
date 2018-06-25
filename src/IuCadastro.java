@@ -13,7 +13,7 @@ import java.util.Scanner;
 * @since 1.0
 * @see NegocioCadastro
 */
-class IuCadastro{
+public class IuCadastro{
 
 	/**
 	* Método que recebe as informações do usuário por meio do terminal para validar seu cadastro. São elas: nome, 
@@ -22,7 +22,6 @@ class IuCadastro{
 	*
 	* @return 			um inteiro 0, caso sucesso
 	* @see NegocioCadastro
-	* @see validarCadastro
 	* @see IuLogin
 	* @since 			1.0
 	*/

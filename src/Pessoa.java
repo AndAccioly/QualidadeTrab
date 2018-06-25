@@ -9,7 +9,7 @@ import java.util.List;
 * @version %I%, %G%
 * @since 1.0
 */
-class Pessoa{
+public class Pessoa{
 	private int tipo;
 	private String nome;
 	private String apelido;
@@ -179,7 +179,6 @@ class Pessoa{
 	*
 	* @return 	uma string com todos os campos da pessoa
 	* @see 		Estante
-	* @see 		codEmStr
 	* @since 	1.0
 	*/
 	public String camposEmStr(){

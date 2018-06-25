@@ -18,7 +18,7 @@ import java.util.List;
 * @see Livro
 * @see Estante
 */
-class IuEstante{
+public class IuEstante{
 
 	/**
 	* Método que mostra todos os livros da estante do usuário. Depois mostra um menu com as opções que o usuário pode 

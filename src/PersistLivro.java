@@ -21,7 +21,7 @@ import java.util.ArrayList;
 * @since 1.0
 * @see Livro
 */
-class PersistLivro{
+public class PersistLivro{
 
 	private String linkBdLivro = "bd_livro.xml";
 	String endline = "\n";

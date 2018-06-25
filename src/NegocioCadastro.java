@@ -12,7 +12,7 @@
 * @see PersistPessoa
 * @see Pessoa
 */
-class NegocioCadastro{
+public class NegocioCadastro{
 
 	/**
 	* Método que recebe todos os parâmetros de um objeto Pessoa (nome, apelido, senha e telefone) e verifica se o nome 

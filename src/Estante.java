@@ -10,7 +10,7 @@ import java.util.ArrayList;
 * @version %I%, %G%
 * @since 1.0
 */
-class Estante{
+public class Estante{
 
 	private List<Livro> livros;
 

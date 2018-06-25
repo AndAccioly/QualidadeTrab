@@ -16,7 +16,7 @@ import java.util.ArrayList;
 * @since 1.0
 * @see Pessoa
 */
-class PersistPessoa{
+public class PersistPessoa{
 
 	private String linkBdPessoa = "src/src/bd_pessoa.xml";
 	String endline = "\n";

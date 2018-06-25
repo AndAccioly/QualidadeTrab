@@ -9,7 +9,7 @@ import java.util.ArrayList;
 * @version 	%I%, %G%
 * @since 	1.0
 */
-class Livro{
+public class Livro{
 	private String titulo;
 	private String nomeAutor;
 	private String dtPublicacao;

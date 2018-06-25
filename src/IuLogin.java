@@ -11,7 +11,7 @@ import java.util.Scanner;
 * @version 	%I%, %G%
 * @since 	1.0
 */
-class IuLogin{
+public class IuLogin{
 
 	/**
 	* Método que mostra a tela de login com as opções de logar, cadastrar novo usuário ou sair. Caso ele 
@@ -21,10 +21,7 @@ class IuLogin{
 	* o usuário escolher cadastrar, ele é redirecionado para a tela de cadastro. Se ele quiser sair, o método 
 	* termina.
 	*
-	* @return 			void
 	* @see Pessoa
-	* @see mostrarEstante
-	* @see cadastrar
 	* @since 			1.0
 	*/	
 	public static void login(){
