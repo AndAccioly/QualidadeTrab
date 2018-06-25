@@ -29,7 +29,6 @@ class IuLogin{
 	*/	
 	public static void login(){
 		int opcao = -1;
-		PersistPessoa persistPessoa = new PersistPessoa();
 		Scanner reader = new Scanner(System.in);
 
 		while(opcao != 0){
@@ -56,5 +55,7 @@ class IuLogin{
 				IuCadastro.cadastrar();
 			}
 		}
+
+		reader.close();
 	}
 }

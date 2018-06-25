@@ -48,6 +48,7 @@ class IuCadastro{
 			System.out.println("Erro na validacao de dados");
 		}
 		
+		reader.close();
 		return 0;
 	}
 }

@@ -285,7 +285,6 @@ class IuEstante{
 	*/
 	public static int consultarLivro(){
 		Scanner reader = new Scanner(System.in);
-		PersistLivro persistLivro = new PersistLivro();
 		String opcao = "";
 		int i = 0;
 		String nomeLivro;
@@ -311,6 +310,7 @@ class IuEstante{
 			System.out.println("\nNova consulta? (s/n) ");
 			opcao = reader.nextLine();
 		}
+		reader.close();
 		return 0;
 	}
 
